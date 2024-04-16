@@ -102,12 +102,43 @@
 
   <tfoot>
     <tr>
-      <td>Learning & Refining</td>
+      <td>Totals</td>
       <td></td>
       <td>28/50</td>
     </tr>
   </tfoot>
 </table>
+
+<h2 class = "form-title">Contact Me</h2>
+<form action = "#" method = "POST">
+  <label for = "name">Name</label>
+  <input type = "text" name ="name" placeholder = "Enter your name" id = "name" required>
+
+  <label for = "email">Email</label>
+  <input type = "email" name = "email" placeholder = "Enter your email" id = "email" required>
+
+  <label for = "number">Phone Number</label>
+  <input type = "text" name = "number" placeholder = "Enter your phone number" id = "number" required>
+
+  <label for = "organization">Organization</label>
+  <input type = "text" name = "organization" placeholder = "Organization" id = "organization" required>
+
+  <label for = "contact-reason">Reason for Contact</label>
+  <select name = "contact-reason" id = "contact-reason">
+    <option value = "job">Employment</option>
+    <option value = "project">Question</option>
+    <option value = "other">Other</option>
+  </select>
+
+  <!-- going to use flex display to line them up in a column -->
+
+  <label for = "message">Message</label>
+  <textarea name = "message" id = "message" cols = "20" rows = "10" placeholder = "Enter your message here"></textarea>
+
+  <button type = "reset">Clear</button>
+  <button type = "submit">Submit</button>
+</form>
+
 
       <!-- <section class = "section-skills">
         <h3 class = "section-skills-title">Skills</h3>
