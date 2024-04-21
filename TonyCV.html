@@ -4,51 +4,54 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel = "stylesheet" href = "style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+  <script src="https://kit.fontawesome.com/48268d6643.js" crossorigin="anonymous"></script>
   <title>Tony's CV</title>
 </head>
 
   <body>
-    <nav class="nav-bar">
-        <li><a href="#about">About Me</a></li>
-        <li><a href="#projects">Projects</a></li>
-        <li><a href="#education">Education</a></li>
-        <li><a href="#skills">Skills</a></li>
-        <li><a href="#contact">Contact</a></li>
-      </ul>
-    </nav>
-
-    <header class>
-      <h1 class = "name">Tony Rodriguez</h2>
-      <img src = /assets/tony.jpeg alt txt = "Tony Rodriguez">
-    </header>
-      <section class = "section-contact">
-        <h2 class = "section-contact-title">Get in touch with me!</h2>
-        <ul class = "section-contact-list">
-          <li>Phone Number: 516-581-5636</li>
-          <li>GitHub: TonyRodriguez24</li>
-          <li>Email: TonyRodriguez26@outlook.com</li>
-          <li>LinkedIn: TonyRodriguez24</li>
-        </ul>
-      </section>
+      <header>
+        <h1 class = "name">Hi, I'm Tony Rodriguez and I'm studying to become a Software Engineer. I will be using this website to document my journey as I gain more experience.</h1>
+        <img src = /assets/tony.jpeg alt txt = "Tony Rodriguez">
+      </header>
     
  
 
     <main>
-      
+      <section class = "contact">
+        <h2 class = "contact-title">Get in touch with me!</h2>
+        <ul class = "contact-list">
+          <li><a href="tel:516-581-5636"><i class="fa-solid fa-phone"></i> 516-581-5636</li></a> 
+          <li><a href=<i class="fa-brands fa-square-github"></i></a> TonyRodriguez24</li>
+          <li><a href=<i class="fa-solid fa-envelope"></i></a> TonyRodriguez26@outlook.com</li>
+          <li><a href=<i class="fa-brands fa-linkedin"></i></a> TonyRodriguez24</li>
+        </ul>
+      </section>
 
       <section class = "section-summary">
         <h3 class = "section-summary-title">Summary</h3>
         <p class = "section-summary-paragraph">
-          Hi, my name is Tony and I'm a Full-Stack Developer. I am currently at Springboard refining and learning new skills that will help me pursue a career in Software Engineering. I'm 26 years old and I live in Oceanside, New York and I want to help build applications and the like that can make people's lives easier.
+          Hi, my name is Tony and I'm a Full-Stack Developer. I am currently at Springboard refining and learning new skills that will help me pursue a career in Software Engineering. I'm 26 years old and I live in Oceanside, New York and I want to help build applications and the like that can make people's lives easier. The languages I am currently most proficient in is Java. Outside of coding I enjoy playing basketball, watching sports, going to the gym, watching movies, and playing video games. I'm a Knicks and Giants fan.
         </p>
       </section>
 
       <section class = "section-projects">
         <h3 class = "section-projects-title">Projects</h3>
         <p class = "section-projects-paragraph">
-          1. For now I can finish up my friends website and show that here, I want this to be full of projects to show off my skillset. By the end of my time at Springboard I hope to do that.
+          1. For now I can finish up my friends website and show that here, I want this to be full of projects to show off my skillset. By the end of my time at Springboard and beyond that I hope to do that.
       <!-- Once I have a good amount I think i'd want to use a carousel to show them off.-->
         </p>
+
+        <div class = "jpm-website">
+          <h4 class = "jpm-website-title">JPM Website</h4>
+          <p class = "jpm-website-paragraph">
+            This is a website I made for my friend's general business. It's a simple website and is made with HTML, CSS, and JavaScript. I'm currently still working on it.
+          </p>
+          <img src = /assets/JPMhome.png alt txt = "JPM Website">
+        </div>
+
       </section>
 
       <section class = "section-education"> 
@@ -59,7 +62,7 @@
       </section>
 
 <!-- Insert table here -->
-<table>
+<!-- <table>
   <caption>Current Comfort Level of Skills</caption>
   <thead>
     <tr>
@@ -108,33 +111,44 @@
       <td>28/50</td>
     </tr>
   </tfoot>
-</table>
+</table> -->
 
 <h2 class = "form-title">Contact Me</h2>
 <form action = "#" method = "POST">
-  <label for = "name">Name</label>
-  <input type = "text" name ="name" placeholder = "Enter your name" id = "name" required>
+  <div class = "input-group">
+    <label for = "name">Name</label>
+    <input type = "text" name ="name" placeholder = "Enter your name" id = "name" required>
+  </div>
 
-  <label for = "email">Email</label>
-  <input type = "email" name = "email" placeholder = "Enter your email" id = "email" required>
+  <div class = "input-group">
+    <label for = "email">Email</label>
+    <input type = "email" name = "email" placeholder = "Enter your email" id = "email" required>
+  </div>
 
-  <label for = "number">Phone Number</label>
-  <input type = "text" name = "number" placeholder = "Enter your phone number" id = "number" required>
+  <div class = "input-group">
+    <label for = "number">Phone Number</label>
+    <input type = "text" name = "number" placeholder = "Enter your phone number" id = "number" required>
+  </div>
 
-  <label for = "organization">Organization</label>
-  <input type = "text" name = "organization" placeholder = "Organization" id = "organization" required>
-
-  <label for = "contact-reason">Reason for Contact</label>
-  <select name = "contact-reason" id = "contact-reason">
+  <div class = "input-group">
+    <label for = "organization">Organization</label>
+    <input type = "text" name = "organization" placeholder = "Organization" id = "organization" required>
+  </div>
+  
+  <div class = "input-group">
+    <label for = "contact-reason">Reason for Contact</label>
+    <select name = "contact-reason" id = "contact-reason">
     <option value = "job">Employment</option>
     <option value = "project">Question</option>
     <option value = "other">Other</option>
-  </select>
+    </select>
+  </div>
 
   <!-- going to use flex display to line them up in a column -->
-
-  <label for = "message">Message</label>
-  <textarea name = "message" id = "message" cols = "20" rows = "10" placeholder = "Enter your message here"></textarea>
+  <div class = "input-group">
+    <label for = "message">Message</label>
+    <textarea name = "message" id = "message" cols = "20" rows = "10" placeholder = "Enter your message here"></textarea>
+  </div>
 
   <button type = "reset">Clear</button>
   <button type = "submit">Submit</button>
