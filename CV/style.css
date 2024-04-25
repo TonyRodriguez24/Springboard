@@ -1,5 +1,6 @@
 html {
   background-color: rgb(221, 216, 208);
+  box-sizing: border-box;
 }
 
 * {
@@ -83,7 +84,6 @@ hr {
   height: 200px;
   padding-left: 10px;
   font-size: 1.5em;
-  margin-left: 20px;
 }
 
 .contact-list {
@@ -104,31 +104,37 @@ a {
 }
 
 .section-summary,
-.section-education {
-  margin: 0px 60px;
-}
-
-.section-projects img {
-  width: 80%;
-  height: auto;
+.section-education,
+.section-projects {
+  width: 100%;
+  padding: 30px;
 }
 
 .projects-container {
   display: flex;
-  position: relative;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
   width: 100%;
   background-color: sandybrown;
-  flex-wrap: wrap;
-  border: 1px solid black;
-  border-radius: 10%;
-  justify-content: center;
-  text-align: left;
 }
 
 .projects-container-project {
   display: flex;
-  width: 50%;
+  flex-direction: column;
   background-color: aqua;
+  padding: 30px;
+  width: 40%;
+  justify-content: center;
+  text-align: left;
+  border: 1px solid black;
+  box-shadow: 3px 5px 5px rgba(0, 0, 0, 0.3);
+  border-radius: 20px;
+}
+
+.projects-container-project img {
+  width: 40%;
+  height: auto;
+  border: 5px inset rgb(214, 181, 181);
 }
 
 .form-title {
