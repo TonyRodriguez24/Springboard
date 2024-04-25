@@ -1,30 +1,25 @@
-html
-{
+html {
   background-color: rgb(221, 216, 208);
 }
 
-*
-{
+* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-.raleway-font
-{
+.raleway-font {
   font-family: "Raleway", sans-serif;
   font-weight: 500;
   font-style: normal;
 }
 
-body
-{
+body {
   font-family: "Raleway", sans-serif;
   color: #000000;
 }
 
-h1
-{
+h1 {
   font-size: 4vh;
   font-weight: bold;
   margin: 30px 20px 0px 0px;
@@ -36,30 +31,24 @@ h1
   justify-content: center;
 }
 
-h2
-{
+h2 {
   font-size: 30px;
   margin: 20px 0px;
-
 }
 
-h3
-{
+h3 {
   font-size: 24px;
   margin: 20px 0px;
 }
 
-header
-{
+header {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: space-evenly;
 }
 
-
-header img
-{
+header img {
   width: 280px;
   height: 280px;
   border: 6px inset rgb(13, 15, 109);
@@ -69,25 +58,21 @@ header img
   box-shadow: 5px 10px 10px rgba(0, 0, 0, 0.3);
 }
 
-hr
-{
+hr {
   width: 84%;
   margin: 20px auto;
   border: 1px solid black;
-
 }
 
-.section-education hr, .section-summary hr, .section-projects hr
-{
-  
+.section-education hr,
+.section-summary hr,
+.section-projects hr {
   margin: 20px 0px;
   width: 100%;
   border: 1px solid rgb(116, 116, 116);
 }
 
-
-.contact
-{
+.contact {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -98,16 +83,14 @@ hr
   height: 200px;
   padding-left: 10px;
   font-size: 1.5em;
-  margin-left:20px;
+  margin-left: 20px;
 }
 
-.contact-list
-{
-  list-style-type : none;
+.contact-list {
+  list-style-type: none;
 }
 
-p
-{
+p {
   font-size: 20px;
   line-height: 1.5;
   margin-bottom: 20px;
@@ -115,31 +98,44 @@ p
   min-width: 400px;
 }
 
-a
-{
+a {
   color: #000000;
   text-decoration: none;
 }
 
-.section-projects, .section-summary, .section-education
-{
+.section-summary,
+.section-education {
   margin: 0px 60px;
 }
 
-.section-projects img
-{
-  width: 500px;
+.section-projects img {
+  width: 80%;
   height: auto;
-
 }
 
-.form-title
-{
+.projects-container {
+  display: flex;
+  position: relative;
+  width: 100%;
+  background-color: sandybrown;
+  flex-wrap: wrap;
+  border: 1px solid black;
+  border-radius: 10%;
+  justify-content: center;
+  text-align: left;
+}
+
+.projects-container-project {
+  display: flex;
+  width: 50%;
+  background-color: aqua;
+}
+
+.form-title {
   text-align: center;
 }
 
-form
-{
+form {
   display: flex;
   flex-wrap: wrap;
   flex-direction: column;
@@ -147,8 +143,7 @@ form
   align-items: center;
 }
 
-.input-group
-{
+.input-group {
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -158,8 +153,7 @@ form
   padding: 10px;
 }
 
-.input-group label
-{
+.input-group label {
   display: flex;
   justify-content: flex-end;
   align-items: center;
@@ -167,12 +161,10 @@ form
   min-width: 140px;
   height: 34px;
   text-align: center;
-
 }
 
-
-.input-group input, select
-{
+.input-group input,
+select {
   width: 280px;
   height: 34px;
   text-align: right;
@@ -182,8 +174,7 @@ form
   border: 2px solid black;
 }
 
-textarea
-{
+textarea {
   display: flex;
   justify-content: center;
   text-align: start;
@@ -194,15 +185,13 @@ textarea
   resize: none;
 }
 
-.button-group
-{
+.button-group {
   display: flex;
   flex-direction: row;
   justify-content: center;
 }
 
-.input-group:nth-of-type(6)
-{
+.input-group:nth-of-type(6) {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -210,13 +199,11 @@ textarea
   gap: 10px;
 }
 
-.input-group:nth-of-type(6) label
-{
+.input-group:nth-of-type(6) label {
   justify-content: center;
 }
 
-button
-{
+button {
   width: 100px;
   height: 40px;
   margin: 10px;
@@ -226,8 +213,7 @@ button
   border-radius: 5px;
 }
 
-button:hover
-{
+button:hover {
   background-color: hsl(239, 73%, 35%);
   color: gold;
   cursor: pointer;
