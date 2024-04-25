@@ -1,0 +1,234 @@
+html
+{
+  background-color: rgb(221, 216, 208);
+}
+
+*
+{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.raleway-font
+{
+  font-family: "Raleway", sans-serif;
+  font-weight: 500;
+  font-style: normal;
+}
+
+body
+{
+  font-family: "Raleway", sans-serif;
+  color: #000000;
+}
+
+h1
+{
+  font-size: 4vh;
+  font-weight: bold;
+  margin: 30px 20px 0px 0px;
+  text-align: center;
+  width: 40%;
+  min-width: 400px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+h2
+{
+  font-size: 30px;
+  margin: 20px 0px;
+
+}
+
+h3
+{
+  font-size: 24px;
+  margin: 20px 0px;
+}
+
+header
+{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+
+
+header img
+{
+  width: 280px;
+  height: 280px;
+  border: 6px inset rgb(13, 15, 109);
+  margin: 20px 0px;
+  border-radius: 100%;
+  object-fit: cover;
+  box-shadow: 5px 10px 10px rgba(0, 0, 0, 0.3);
+}
+
+hr
+{
+  width: 84%;
+  margin: 20px auto;
+  border: 1px solid black;
+
+}
+
+.section-education hr, .section-summary hr, .section-projects hr
+{
+  
+  margin: 20px 0px;
+  width: 100%;
+  border: 1px solid rgb(116, 116, 116);
+}
+
+
+.contact
+{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: left;
+  width: 100%;
+  min-width: 400px;
+  height: 200px;
+  padding-left: 10px;
+  font-size: 1.5em;
+  margin-left:20px;
+}
+
+.contact-list
+{
+  list-style-type : none;
+}
+
+p
+{
+  font-size: 20px;
+  line-height: 1.5;
+  margin-bottom: 20px;
+  width: 50%;
+  min-width: 400px;
+}
+
+a
+{
+  color: #000000;
+  text-decoration: none;
+}
+
+.section-projects, .section-summary, .section-education
+{
+  margin: 0px 60px;
+}
+
+.section-projects img
+{
+  width: 500px;
+  height: auto;
+
+}
+
+.form-title
+{
+  text-align: center;
+}
+
+form
+{
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.input-group
+{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin: 0px;
+  width: 100%;
+  max-width: 700px;
+  padding: 10px;
+}
+
+.input-group label
+{
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  width: 180px;
+  min-width: 140px;
+  height: 34px;
+  text-align: center;
+
+}
+
+
+.input-group input, select
+{
+  width: 280px;
+  height: 34px;
+  text-align: right;
+  margin-left: 20px;
+  align-items: center;
+  padding-right: 20px;
+  border: 2px solid black;
+}
+
+textarea
+{
+  display: flex;
+  justify-content: center;
+  text-align: start;
+  padding-left: 10px;
+  padding-top: 10px;
+  width: 90%;
+  height: 140px;
+  resize: none;
+}
+
+.button-group
+{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.input-group:nth-of-type(6)
+{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+.input-group:nth-of-type(6) label
+{
+  justify-content: center;
+}
+
+button
+{
+  width: 100px;
+  height: 40px;
+  margin: 10px;
+  background-color: hsl(239, 73%, 55%);
+  color: white;
+  border: 2px solid black;
+  border-radius: 5px;
+}
+
+button:hover
+{
+  background-color: hsl(239, 73%, 35%);
+  color: gold;
+  cursor: pointer;
+}
