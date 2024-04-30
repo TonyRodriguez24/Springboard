@@ -24,3 +24,27 @@ const encryptedLetterNew = alphabet[newIndex];
 const encryptedMessage = "EUXWXV";
 const slicedMessage = encryptedMessage.slice(0, 3);
 console.log(slicedMessage);
+
+const exampleFunction = (message, shiftValue) => {
+  // this is a function that takes in a message and a shift value as arguments and returns the decrypted message
+  const alphabet = "abcdefghijklmnopqrstuvwxyz";
+  let decryptedMessage = "";
+
+  for (let i = 0; i < message.length; i++) {
+    const letter = message[i];
+    const index = alphabet.indexOf(letter.toLowerCase());
+    const updatedIndex = (index - shiftValue) % alphabet.length;
+    const decryptedLetter = alphabet[updatedIndex];
+    decryptedMessage += decryptedLetter;
+  }
+
+  return decryptedMessage;
+};
+
+const functionOutput = () => {
+  const message = "euxwxv";
+  const shiftValue = 3;
+  const decryptedMessage = exampleFunction(message, shiftValue);
+  console.log(decryptedMessage);
+}
+
