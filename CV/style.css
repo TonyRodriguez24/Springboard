@@ -1,5 +1,4 @@
 html {
-  background-color: rgb(221, 216, 208);
   box-sizing: border-box;
 }
 
@@ -7,6 +6,7 @@ html {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  scrollbar-color: red;
 }
 
 .raleway-font {
@@ -201,6 +201,8 @@ select {
   padding-right: 20px;
   border: 2px solid black;
   border-radius: 10px;
+  background-color: rgb(206, 225, 247);
+  color: rgb(83, 83, 83);
 }
 
 textarea {

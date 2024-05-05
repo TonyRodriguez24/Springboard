@@ -114,8 +114,33 @@ console.log("Congrats! You guessed the target!");
 
 //unusual to use break in a for loop because you define the number of iterations
 //use break in a while loop
-let subreddits = [  "soccer", "popheads", "cringe", "books"];
-for (let subject of subreddits) 
-{
+let subreddits = ["soccer", "popheads", "cringe", "books"];
+for (let subject of subreddits) {
   console.log(subject);
-} 
+}
+
+//for of loop is used to iterate over arrays
+//for in loop is used to iterate over objects
+
+const movieReviews = {
+  Arrival: 9.5,
+  Alien: 9,
+  Amelie: 8,
+  "In Bruges": 9,
+  Amadeus: 8,
+  "Kill Bill": 8,
+};
+
+for (let movie of Object.keys(movieReviews)) {
+  console.log(movie, movieReviews[movie]);
+}
+
+const ratings = Object.values(movieReviews);
+let total = 0;
+for (let rating of ratings) {
+  total += rating;
+}
+
+console.log(total);
+let average = total / ratings.length;
+console.log(average);
