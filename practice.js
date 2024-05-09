@@ -263,36 +263,59 @@
 // a sentence that contains every letter of the alphabet at least once
 // "The quick brown fox jumps over the lazy dog"
 
-function isPangram(sentence) {
-  const alphabet = "abcdefghijklmnopqrstuvwxyz";
-  for (let letter of alphabet) {
-    if (sentence.indexOf(letter) === -1) {
-      return false;
-    }
+// function isPangram(sentence) {
+//   const alphabet = "abcdefghijklmnopqrstuvwxyz";
+//   for (let letter of alphabet) {
+//     if (sentence.indexOf(letter) === -1) {
+//       return false;
+//     }
+//   }
+//   return true;
+// }
+
+// function getCard() {
+//   const values = [
+//     "2",
+//     "3",
+//     "4",
+//     "5",
+//     "6",
+//     "7",
+//     "8",
+//     "9",
+//     "10",
+//     "J",
+//     "Q",
+//     "K",
+//     "A",
+//   ];
+//   const value = values[Math.floor(Math.random() * values.length)];
+//   const suits = ["clubs", "spades", "hearts", "diamonds"];
+//   const suit = suits[Math.floor(Math.random() * suits.length)];
+//   return { value: value, suit: suit };
+// }
+
+// console.log(getCard());
+
+function greet() {
+  console.log("Hi");
+}
+
+function repeatThreeTimes(func) {
+  func();
+  func();
+  func();
+}
+
+repeatThreeTimes(greet);
+
+function repeat(num, func) {
+  for (let i = 0; i < num; i++) {
+    func();
   }
-  return true;
 }
 
-function getCard() {
-  const values = [
-    "2",
-    "3",
-    "4",
-    "5",
-    "6",
-    "7",
-    "8",
-    "9",
-    "10",
-    "J",
-    "Q",
-    "K",
-    "A",
-  ];
-  const value = values[Math.floor(Math.random() * values.length)];
-  const suits = ["clubs", "spades", "hearts", "diamonds"];
-  const suit = suits[Math.floor(Math.random() * suits.length)];
-  return { value: value, suit: suit };
-}
+repeat(5, greet);
 
-console.log(getCard());
+//can pass functions as arguments to other functions
+
