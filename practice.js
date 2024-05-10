@@ -392,5 +392,5 @@ console.log(quad(4));
   // console.log(1)
 // }
 
-const funcky = [function(){console.log(1)},function(){console.log(2)}]
+
 
