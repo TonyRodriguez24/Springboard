@@ -301,13 +301,17 @@ function greet() {
   console.log("Hi");
 }
 
+function diss() {
+  console.log("You stink");
+}
+
 function repeatThreeTimes(func) {
   func();
   func();
   func();
 }
 
-repeatThreeTimes(greet);
+// repeatThreeTimes(greet);
 
 function repeat(num, func) {
   for (let i = 0; i < num; i++) {
@@ -315,7 +319,78 @@ function repeat(num, func) {
   }
 }
 
-repeat(5, greet);
+// repeat(5, greet);
 
 //can pass functions as arguments to other functions
+
+//first class functions continued
+//a function can be assigned to a variable
+
+let funcs = [greet, diss];
+
+const myFunc = function add(x, y) {
+  return x + y;
+};
+
+myFunc(5, 6);
+// console.log(myFunc(5, 6));
+
+function giveBirth() {
+  console.log("GIVING BIRTH");
+  return function cry() {
+    return "wahhhhh";
+  };
+}
+
+const func = giveBirth();
+func();
+
+//why to do this
+
+function makeMultiplyFunc(num) {
+  return function mult(x) {
+    return num * x;
+  };
+}
+
+const quad = makeMultiplyFunc(4);
+
+console.log(quad(4));
+
+//javascript is a single threaded language
+//timers
+
+// greet();
+// setTimeout(diss, 5000);
+// const id = setInterval(greet, 1000);
+// clearInterval(id);
+
+// //anonymous functions
+// //functions without a name
+
+// setTimeout(function () {
+//   diss();
+//   diss();
+//   diss();
+// }, 3000);
+
+// setTimeout(function(){
+//   console.log("I am an anonymous function");
+// },3000);
+
+// function doTwice(func) {
+//   func();
+//   func();
+// }
+
+// doTwice(function () {
+//   console.log("Hello World");
+//   console.log("please work");
+// });
+
+// const printOne = function(){
+  // console.log(1)
+// }
+
+const funcky = [function(){console.log(1)},function(){console.log(2)}]
 
