@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="header"></div>
+    <section id="container">
+      <ul>
+        <li class="first">one</li>
+        <li class="second">two</li>
+        <li class="third">three</li>
+      </ul>
+      <ol>
+        <li class="first">one</li>
+        <li class="second">two</li>
+        <li class="third">three</li>
+      </ol>
+    </section>
+    <div class="footer"></div>
+  </body>
+</html>
+const document.getElementByID(‘container’);
+document.querySelector(‘#container’);
+document.getElementByClassName(‘second’);
+document.querySelector('ol .third');
+const container = document.getElementById('container')
+container.innerText = 'Hello!'
+const footer = document.querySelector(‘.footer’);
+footer.classList.add('main');
+footer.classList.remove(‘main’);
+const newLi = document.createElement('li');
+newLi.innerText = 'four';
+ul.append(newLi);
+let liInsideOl = document.querySelectorAll ('ol li');
+for (let li of liInsideOl)
+ {
+ 	 li.style.backgroundColor = 'green';
+}
+footer.remove();

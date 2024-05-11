@@ -392,5 +392,8 @@ console.log(quad(4));
   // console.log(1)
 // }
 
+//document object model
+
+document.getElementById("id");
 
 
