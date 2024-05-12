@@ -84,3 +84,55 @@ form.addEventListener("submit", function (event) {
   friendList.append(newLi);
   form.reset();
 });
+
+
+function makeBody(color){
+  document.body.style.backgroundColor = color;
+}
+
+const violet = document.querySelector("#violet");
+
+violet.addEventListener("click", function(){
+  makeBody(violet);
+});
+
+violetBtn.addEventListener("click", function(){
+  h1.style.color = "violet"; 
+});
+
+//script at the bottom of the body
+
+document.addEventListener("DOMContentLoaded",function(){
+  console.log("DOM has loaded");
+})
+
+window.addEventListener("load", function(){
+  console.log("Window has loaded");
+});
+
+//the event object
+
+const h1 = document.querySelector("h1");
+
+h1.addEventListener("click", function(event){
+  console.log(event);
+} );
+
+//what is inside of the event onject
+//target - what element is the target of the event
+//pageX/pageY - where on the page does this event occur
+//key - what key was pressed that triggered this event
+//preventDefault() - a function used to prevent the default behavior of the event
+
+const p = document.querySelector('p');
+p.addEventListener('mousedown', function(e){
+  console.log(e.pageX, e.pageY);
+});
+
+document.addEventListener('mousemove', function(e){
+  console.log(e.pageX, e.pageY);
+  const r = e.x * 255 / window.innerWidth;
+  const b = e.y * 255 / window.innerHeight;
+  console.log(r,0,b);
+  document.body.style.backgroundColor = `rgb(${r},0,${b})`;
+} );
