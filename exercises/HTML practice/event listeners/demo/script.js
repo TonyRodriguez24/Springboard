@@ -65,6 +65,11 @@ friendList.addEventListener("click", function (e) {
 
 form.addEventListener("submit", function (e) {
   e.preventDefault();
+  //require input
+  if (input.value === "") {
+    alert("Please enter a name");
+    return;
+  }
   const newFriend = document.createElement("li");
   const removeButton = document.createElement("button");
   newFriend.innerText = input.value;
