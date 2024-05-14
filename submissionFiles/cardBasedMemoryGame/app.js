@@ -39,6 +39,7 @@ function shuffle(array) {
   return array;
 }
 
+//shuffle the colors
 let shuffledColors = shuffle(COLORS);
 
 // this function loops over the array of colors
