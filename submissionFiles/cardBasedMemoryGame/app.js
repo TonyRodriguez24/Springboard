@@ -61,11 +61,31 @@ function createDivsForColors(colorArray) {
   }
 }
 
+
+
+//setting the last clicked card to null
+let lastClickedCard = null;
+
 // TODO: Implement this function!
 function handleCardClick(event) {
   // you can use event.target to see which element was clicked
-  console.log("you just clicked", event.target);
+  alert("you just clicked " + event.target.classList);
+
+  
+
+
+
+
 }
+
 
 // when the DOM loads
 createDivsForColors(shuffledColors);
+
+
+/*clicking a card should change the backround color to be the color of the class it has
+users should only be able to change at most two cards at a time
+clicking on two matching cards should be a match, those card should stay facing up
+when clicking two cards that arent a match, they shhould stay turned for a second beofre they hide the color again
+Use setTimeout to delay the hiding of the cards */
+
