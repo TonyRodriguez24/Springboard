@@ -3,7 +3,7 @@
 const gameContainer = document.getElementById("game");
 let card1 = null; //sets the first card to null
 let card2 = null; //sets the second card to null
-let clickAllowed = false;
+let clickDisabled = false;
 let cardsFlipped = 0;
 
 //creating an array of colors
@@ -70,15 +70,12 @@ function createDivsForColors(colorArray) {
 function handleCardClick(event) {
 
   if (clickDisabled) return; //if clickDisabled is set to true, return. Otherwise keep going with the function
-  if (currentCard.classList.contains("flipped")); //if the current card has the class flipped then return
-  alert("you just clicked " + event.target.classList); //using this to test
-
   const currentCard = event.target; //setting the current card to the event target
+  if (currentCard.classList.contains("flipped")) return; //if the current card has the class flipped then return
+
   currentCard.style.backgroundColor = currentCard.classList[0]; //setting the background color of the current card to the class of the current card
 
-
-
-  if (!card1 || !card2) //starting point because both are rue statements since not card1 or card2 both start with the value null
+  if (card1 === null || card2 === null) //starting point because both are rue statements since not card1 or card2 both start with the value null
   {
     currentCard.classList.add("flipped"); //adding the class flipped to the current card
     card1 = card1 || currentCard; //the or operator will set card1 to the first truthy value. If card1 is null, then it will set it to the current card
@@ -90,7 +87,7 @@ function handleCardClick(event) {
 
   if (card1 && card2) //if both cards have been flipped because card1 is not null and card2 is not null
   {
-    clickingDisabled = true; //disable clicking
+    clickDisabled = true; //disable clicking
     // debugger
     let card1ClassName = card1.className; //getting the class name of card 1 and 2 and assigning them to variables
     let card2ClassName = card2.className;
@@ -113,16 +110,12 @@ function handleCardClick(event) {
         card2.classList.remove("flipped");
         card1 = null; //set card 1 and card 2 to null
         card2 = null;
-        clickingDisabled = false; //enable clicking
+        clickDisabled = false; //enable clicking
       }, 1000); //result of this being checked happens after 1 second
     }
   }
 
   if (cardsFlipped === COLORS.length) alert("game over!"); //if the amount of cards flipped is equal to the amount of colors in the array, then the game is over
-
-
-
-  currentCard.style.backgroundColor = currentCard.classList[0]; //setting the background color of the current card to the class of the current card
 
 }
 

@@ -82,7 +82,8 @@ function handleCardClick(e) {
     } 
     
     
-    else {
+    else 
+    {
       setTimeout(function () {
         card1.style.backgroundColor = ""; //card1 and card2 background color is set to an empty string becuase they dont match
         card2.style.backgroundColor = "";
