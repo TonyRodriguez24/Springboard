@@ -55,7 +55,7 @@ function handleCardClick(e) {
   if (noClicking) return;
   if (e.target.classList.contains("flipped")) return;
 
-  let currentCard = e.target;
+  const currentCard = e.target;
   currentCard.style.backgroundColor = currentCard.classList[0];
 
   if (!card1 || !card2) {
@@ -78,7 +78,7 @@ function handleCardClick(e) {
       card2 = null;
       noClicking = false;
     } else {
-      setTimeout(function() {
+      setTimeout(function () {
         card1.style.backgroundColor = "";
         card2.style.backgroundColor = "";
         card1.classList.remove("flipped");

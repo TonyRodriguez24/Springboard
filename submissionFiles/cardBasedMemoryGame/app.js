@@ -1,9 +1,9 @@
 
 //getting the game container
 const gameContainer = document.getElementById("game");
-let card1 = null;
-let card2 = null;
-let noClicking = false;
+let card1 = null; //sets the first card to null
+let card2 = null; //sets the second card to null
+let clickAllowed = false;
 let cardsFlipped = 0;
 
 //creating an array of colors
@@ -69,20 +69,31 @@ function createDivsForColors(colorArray) {
 
 // let card1 = null;
 // let card2 = null;
-// let noClicking = false;
+// let clickAllowed;
 // let cardsFlipped = 0;
 
 
 // TODO: Implement this function!
 function handleCardClick(event) {
-  // you can use event.target to see which element was clicked
-  alert("you just clicked " + event.target.classList);
-  
-
-  //getting the currentt card, adding the class flip to it and setting the background color to the class
+  //setting the current card to the event target
   const currentCard = event.target;
-  currentCard.classList.add("flipped");
-  currentCard.style.backgroundColor = currentCard.classList[0];
+
+
+  if (clickDisabled) return; //if clickAllowed is set to true, return. Otherwise keep going with the function
+  if (currentCard.classList.contains("flipped")); //if the current card has the class flipped then return
+  alert("you just clicked " + event.target.classList); //using this to test
+
+
+
+  if (!card1 || !card2) {
+    currentCard.classList.add("flipped"); //adding the class flipped to the current card
+    card1 = card1 || currentCard; //the or operator will set card1 to the first truthy value. If card1 is null, then it will set it to the current card
+    card2 = currentCard === card1 ? null : currentCard; //card 2 is set to current card and if that value is equal to card 1
+  }
+
+
+
+  currentCard.style.backgroundColor = currentCard.classList[0]; //setting the background color of the current card to the class of the current card
 
 }
 
