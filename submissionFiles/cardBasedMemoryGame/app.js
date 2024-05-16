@@ -66,30 +66,59 @@ function createDivsForColors(colorArray) {
 }
 
 
-
-// let card1 = null;
-// let card2 = null;
-// let clickAllowed;
-// let cardsFlipped = 0;
-
-
 // TODO: Implement this function!
 function handleCardClick(event) {
-  //setting the current card to the event target
-  const currentCard = event.target;
 
-
-  if (clickDisabled) return; //if clickAllowed is set to true, return. Otherwise keep going with the function
+  if (clickDisabled) return; //if clickDisabled is set to true, return. Otherwise keep going with the function
   if (currentCard.classList.contains("flipped")); //if the current card has the class flipped then return
   alert("you just clicked " + event.target.classList); //using this to test
 
+  const currentCard = event.target; //setting the current card to the event target
+  currentCard.style.backgroundColor = currentCard.classList[0]; //setting the background color of the current card to the class of the current card
 
 
-  if (!card1 || !card2) {
+
+  if (!card1 || !card2) //starting point because both are rue statements since not card1 or card2 both start with the value null
+  {
     currentCard.classList.add("flipped"); //adding the class flipped to the current card
     card1 = card1 || currentCard; //the or operator will set card1 to the first truthy value. If card1 is null, then it will set it to the current card
-    card2 = currentCard === card1 ? null : currentCard; //card 2 is set to current card and if that value is equal to card 1
+    card2 = currentCard === card1 ? null : currentCard;
+    //we're setting card2 to either null or currentCard
+    //if the current card is card1 then card2 is null or else we set card2 to the current card
+    //prevents player from matching the card with itself
   }
+
+  if (card1 && card2) //if both cards have been flipped because card1 is not null and card2 is not null
+  {
+    clickingDisabled = true; //disable clicking
+    // debugger
+    let card1ClassName = card1.className; //getting the class name of card 1 and 2 and assigning them to variables
+    let card2ClassName = card2.className;
+
+    if (card1ClassName === card2ClassName) //if they both have the same class name
+    {
+      cardsFlipped += 2; // add 2 to the cards flipped value
+      card1.removeEventListener("click", handleCardClick); //remove the event listener so it isn't listening for an event
+      card2.removeEventListener("click", handleCardClick); //same thing remove the event listener
+      card1 = null; //setting card1 and card2 to null
+      card2 = null;
+      clickingDisabled = false; //clicking is now enabled
+    }
+
+    else {
+      setTimeout(function () {
+        card1.style.backgroundColor = ""; //card1 and card2 background color is set to an empty string becuase they dont match
+        card2.style.backgroundColor = "";
+        card1.classList.remove("flipped"); //remove the flipped class so the card is no longer flipped and it can be flipped again
+        card2.classList.remove("flipped");
+        card1 = null; //set card 1 and card 2 to null
+        card2 = null;
+        clickingDisabled = false; //enable clicking
+      }, 1000); //result of this being checked happens after 1 second
+    }
+  }
+
+  if (cardsFlipped === COLORS.length) alert("game over!"); //if the amount of cards flipped is equal to the amount of colors in the array, then the game is over
 
 
 
