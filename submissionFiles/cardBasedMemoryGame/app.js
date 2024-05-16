@@ -66,6 +66,10 @@ function createDivsForColors(colorArray) {
 }
 
 
+// function startGame(){
+
+// }
+
 // TODO: Implement this function! I struggled with this one
 function handleCardClick(event) {
 
@@ -99,7 +103,7 @@ function handleCardClick(event) {
       card2.removeEventListener("click", handleCardClick); //same thing remove the event listener
       card1 = null; //setting card1 and card2 to null
       card2 = null;
-      clickingDisabled = false; //clicking is now enabled
+      clickDisabled = false; //clicking is now enabled
     }
 
     else {
@@ -115,9 +119,12 @@ function handleCardClick(event) {
     }
   }
 
-  if (cardsFlipped === COLORS.length) alert("game over!"); //if the amount of cards flipped is equal to the amount of colors in the array, then the game is over
+  //if the amount of cards flipped is equal to the amount of colors in the array, then the game is over
+
 
 }
+
+
 
 // when the DOM loads
 createDivsForColors(shuffledColors);
