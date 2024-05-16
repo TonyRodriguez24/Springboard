@@ -66,7 +66,7 @@ function createDivsForColors(colorArray) {
 }
 
 
-// TODO: Implement this function!
+// TODO: Implement this function! I struggled with this one
 function handleCardClick(event) {
 
   if (clickDisabled) return; //if clickDisabled is set to true, return. Otherwise keep going with the function
