@@ -1,6 +1,10 @@
 
 //getting the game container
 const gameContainer = document.getElementById("game");
+let card1 = null;
+let card2 = null;
+let noClicking = false;
+let cardsFlipped = 0;
 
 //creating an array of colors
 const COLORS = [
@@ -63,21 +67,24 @@ function createDivsForColors(colorArray) {
 
 
 
-//setting the last clicked card to null
-let lastClickedCard = null;
+// let card1 = null;
+// let card2 = null;
+// let noClicking = false;
+// let cardsFlipped = 0;
+
 
 // TODO: Implement this function!
 function handleCardClick(event) {
   // you can use event.target to see which element was clicked
   alert("you just clicked " + event.target.classList);
-
   
 
-
-
+  //getting the currentt card, adding the class flip to it and setting the background color to the class
+  const currentCard = event.target;
+  currentCard.classList.add("flipped");
+  currentCard.style.backgroundColor = currentCard.classList[0];
 
 }
-
 
 // when the DOM loads
 createDivsForColors(shuffledColors);
