@@ -104,7 +104,7 @@ function handleCardClick(event) {
 
     else {
       setTimeout(function () {
-        card1.style.backgroundColor = ""; //card1 and card2 background color is set to an empty string becuase they dont match
+        card1.style.backgroundColor = ""; //card1 and card2 background color is set to an empty string because they don't match
         card2.style.backgroundColor = "";
         card1.classList.remove("flipped"); //remove the flipped class so the card is no longer flipped and it can be flipped again
         card2.classList.remove("flipped");
@@ -123,9 +123,9 @@ function handleCardClick(event) {
 createDivsForColors(shuffledColors);
 
 
-/*clicking a card should change the backround color to be the color of the class it has
+/*clicking a card should change the background color to be the color of the class it has
 users should only be able to change at most two cards at a time
 clicking on two matching cards should be a match, those card should stay facing up
-when clicking two cards that arent a match, they shhould stay turned for a second beofre they hide the color again
+when clicking two cards that aren't a match, they should stay turned for a second before they hide the color again
 Use setTimeout to delay the hiding of the cards */
 
