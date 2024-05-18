@@ -68,11 +68,17 @@ function createDivsForColors(colorArray) {
 
 // function startGame(){
 
-// }
+const startButton = document.querySelector("button");
+startButton.addEventListener("click", function () {
+  startButton.style.display = "none";
+  gameContainer.style.backgroundColor = "rgb(54, 50, 150)";
 
-// TODO: Implement this function! I struggled with this one
+});
+
+// TODO: Implement this function! I struggled with this. Need to study and practice more
+// didn't implement logic for if screen is black not to be able to click on cards and to update score and cards flipped
+
 function handleCardClick(event) {
-
   if (clickDisabled) return; //if clickDisabled is set to true, return. Otherwise keep going with the function
   const currentCard = event.target; //setting the current card to the event target
   if (currentCard.classList.contains("flipped")) return; //if the current card has the class flipped then return
@@ -120,9 +126,13 @@ function handleCardClick(event) {
   }
 
   //if the amount of cards flipped is equal to the amount of colors in the array, then the game is over
+  if (cardsFlipped === COLORS.length) {
+    alert("Game Over!");
+  }
 
 
 }
+
 
 
 
