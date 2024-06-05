@@ -64,9 +64,15 @@ Examples:
 
 */
 function addKeyAndValue(arr,key,value){
-    
+    const newArr = [];
+    arr.forEach(function(element){
+        element[key] = value;
+        newArr.push(element);
+    })
+    return newArr;
 }
 
+// console.log(addKeyAndValue([{name: 'Elie'}, {name: 'Tim'}, {name: 'Matt'}, {name: 'Colt'}], 'title', 'instructor'))
 /*
 Write a function called vowelCount which accepts a string and returns an object with the keys as the vowel and the values as the number of times the vowel appears in the string. This function should be case insensitive so a lowercase letter and uppercase letter should count
 
