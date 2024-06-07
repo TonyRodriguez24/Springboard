@@ -554,8 +554,4 @@ function myFilter(arr, callback){
 
 console.log(myFilter(words, function(word){
   return word.length <=10;
-}))
-
-const everyOtherWord = myFilter(words, function(word,i){
-  return i % 2 === 0;
-})
+}));
