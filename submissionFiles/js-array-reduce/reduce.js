@@ -39,29 +39,31 @@ function vowelCount(str) {
         .toLowerCase()
         .split("")
         .reduce(function (accumulator, nextValue) {
-            if (vowels.includes(nextValue)) 
-                {
-                if(accumulator[nextValue]){
-                    accumulator[nextValue]++
-                }
-                else{
+            if (vowels.includes(nextValue)) {
+                if (accumulator[nextValue]) {
+                    accumulator[nextValue]++;
+                } else {
                     accumulator[nextValue] = 1;
                 }
-                    
-            } 
+            }
 
             return accumulator;
         }, {});
 }
 
 console.log(vowelCount("hello world"));
-console.log(vowelCount("anthony rodriguez"))
+console.log(vowelCount("anthony rodriguez"));
 
 /*
 Write a function called addKeyAndValue which accepts an array of objects and returns the array of objects passed to it with each object now including the key and value passed to the function.
 
 Examples:
-    const arr = [{name: 'Elie'}, {name: 'Tim'}, {name: 'Matt'}, {name: 'Colt'}];
+    const arr = [
+        {name: 'Elie'}, 
+        {name: 'Tim'}, 
+        {name: 'Matt'}, 
+        {name: 'Colt'}
+    ];
     
     addKeyAndValue(arr, 'title', 'Instructor') // 
       [
@@ -73,29 +75,66 @@ Examples:
 */
 
 function addKeyAndValue(arr, key, value) {
-    
+    return arr.reduce(function (accumulator, nextValue) {
+        nextValue[key] = value;
+        accumulator.push(nextValue);
+        return accumulator;
+    }, []);
 }
+const array1 = [
+    { name: "Elie" },
+    { name: "Tim" },
+    { name: "Matt" },
+    { name: "Colt" },
+];
+
+console.log(addKeyAndValue(array1, "title", "Instructor"));
 
 /*
-Write a function called partition which accepts an array and a callback and returns an array with two arrays inside of it. The partition function should run the callback function on each value in the array and if the result of the callback function at that specific value is true, the value should be placed in the first subarray. If the result of the callback function at that specific value is false, the value should be placed in the second subarray. 
+Write a function called partition which accepts an array and a callback and returns an array with two arrays inside of it. 
+The partition function should run the callback function on each value in the array and if the result of the callback function at that specific value is true, 
+the value should be placed in the first subarray. If the result of the callback function at that specific value is false, the value should be placed in the second subarray. 
 
-Examples:
-    
-    function isEven(val){
+    function isEven(val)
+    {
         return val % 2 === 0;
     }
-    
+
     const arr = [1,2,3,4,5,6,7,8];
     
-    partition(arr, isEven) // [[2,4,6,8], [1,3,5,7]];
+    partition(arr, isEven) 
+    // [[2,4,6,8], [1,3,5,7]];
     
-    function isLongerThanThreeCharacters(val){
+    function isLongerThanThreeCharacters(val)
+    {
         return val.length > 3;
     }
     
     const names = ['Elie', 'Colt', 'Tim', 'Matt'];
     
-    partition(names, isLongerThanThreeCharacters) // [['Elie', 'Colt', 'Matt'], ['Tim']]
+    partition(names, isLongerThanThreeCharacters) 
+    // [['Elie', 'Colt', 'Matt'], ['Tim']]
 */
 
-function partition(arr, callback) {}
+function partition(arr, callback) {
+    const trueArray = [];
+    const falseArray = [];
+
+    arr.reduce(function (accumulator, nextValue) {
+        if (callback(nextValue)) {
+            trueArray.push(nextValue);
+        } else {
+            falseArray.push(nextValue);
+        }
+        return accumulator;
+    }, []);
+    return [trueArray, falseArray];
+}
+
+function isLongerThanThreeCharacters(val) {
+    return val.length > 3;
+}
+
+const names = ["Elie", "Colt", "Tim", "Matt"];
+
+console.log(partition(names, isLongerThanThreeCharacters));
