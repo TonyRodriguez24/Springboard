@@ -651,11 +651,87 @@
 
 // console.log(partition(scores, 0))
 
-//find and findIndex
+// //find and findIndex
 
-function myFindIndex(arr, callback) {
-    for (let i = 0; i < arr.length; i++) {
-        if (callback(arr[i], i, arr) === true) return i;
-    }
-    return -1;
-}
+// // function myFindIndex(arr, callback) {
+// //     for (let i = 0; i < arr.length; i++) {
+// //         if (callback(arr[i], i, arr) === true) return i;
+// //     }
+// //     return -1;
+// // }
+
+// const nums = [3, 4, 34, 34, 34, 34, 34, 32, 34, 564, 75647, 674];
+
+// let total = 0;
+
+// for (let num of nums) {
+//     total += num;
+// }
+
+// console.log(total);
+
+// let min = nums[0];
+// for (let i = 0; i < nums.length; i++) {
+//     if (nums[i] < min) min = nums[i];
+// }
+
+// console.log(min);
+
+// const str = "lolapalooza";
+
+// const charFreq = {};
+
+// for (let char of str) {
+//     if (charFreq[char]) {
+//         charFreq[char] += 1;
+//     } else {
+//         charFreq[char] = 1;
+//     }
+// }
+
+// console.log(charFreq);
+
+//using reduce
+//take an array and boil it down to one thing
+
+// accepts a callback and an optional second parameter
+
+let evens = [2, 4, 6, 8, 10];
+
+evens.reduce(function (accumulator, nextValue) {
+    return accumulator + nextValue;
+});
+
+const words = ["hello", "i", "love", "you"];
+
+words.reduce(function (accum, nextWord) {
+    console.log(accum, nextWord);
+    return accum + " " + nextWord;
+});
+
+const midTermScores = [43, 56, 28, 97, 65, 56];
+
+// const minScore = midTermScores.reduce(function(min, nextScore){
+//     if(nextScore < min){
+//         return nextScore;
+//     }
+//     return min;
+// })
+
+// console.log(minScore)
+
+const minScore = midTermScores.reduce(function (min, nextScore) {
+    return nextScore < min ? nextScore : min;
+});
+
+console.log(minScore);
+
+//passing a value as the second argument
+
+const finalScores = [54,67,87,56,45,76,76];
+
+const minFinalScore = finalScores.reduce(function(min, nextScore){
+    return nextScore < min ? nextScore:min;
+}, minScore)
+
+console.l
