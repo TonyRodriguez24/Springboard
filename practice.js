@@ -498,7 +498,7 @@
 // function myMap(arr, callback) {
 //     const mappedArray = [];
 //     for (let i of arr) {
-      
+
 //         mappedArray.push(callback(i));
 //     }
 //     return mappedArray;
@@ -541,7 +541,6 @@
 //   return false;
 // };
 
-
 // function myFilter(arr, callback){
 //   const filteredArray = [];
 //   for(let i = 0; i < arr.length; i++){
@@ -570,7 +569,6 @@
 //         return word.length === 3;
 //     }))
 
-
 //     function allString(arr){
 //         return arr.every(function(el){
 //             return typeof el === "string";
@@ -589,34 +587,75 @@
 //         }
 //     })
 
-//some 
+//some
 // iterate over an array and return true if any of the elements meet a certain condition
 // otherwise return false
 
 //every
 // iterate over an array and return true if all of the elements meet a certain condition
-// otherwise return false
+// // otherwise return false
 
-function mySome(array, callback){
-    for(let i = 0; i < array.length; i++){
-        if(callback(arr[i], i , arr)) return true;
+// function mySome(array, callback){
+//     for(let i = 0; i < array.length; i++){
+//         if(callback(arr[i], i , arr)) return true;
+//     }
+//     return false;
+// }
+
+// mySome([1,2,3,4,5], function(n){
+//     return n > 4;
+// // })
+
+// // function myEvery(array, callback){
+// //     for(let i = 0; i < array.length; i++){
+// //         if(!callback(arr[i], i , arr)) return false;
+// //     }
+// //     return true;
+// // }
+
+// // myEvery([1,2,3,4,5], function(n){
+// //     return n > 4;
+// // })
+
+// const scores = [0, 0, 0, 0, 0, 3, 4, 32, 43, 55, 32, 30, 56, 78, 80];
+
+// console.log(
+//     scores.find(function (element) {
+//         return element > 80;
+//     })
+// );
+
+// //find returns the value of the first element that is found
+
+// console.log(
+//     scores.filter(function (score) {
+//         return score % 2 === 0;
+//     })
+// );
+
+// console.log(
+//     scores.findIndex(function (score) {
+//         return score > 34;
+//     })
+// );
+
+// function partition(arr, pivot){
+//     const pivotIndex = arr.findIndex(function(el){
+//         return el > pivot;
+//     })
+//     //using slice because it doesnt mutate the original array
+//     const left = arr.slice(0, pivotIndex);
+//     const right = arr.slice(pivotIndex)
+//     return [left, right]
+// }
+
+// console.log(partition(scores, 0))
+
+//find and findIndex
+
+function myFindIndex(arr, callback) {
+    for (let i = 0; i < arr.length; i++) {
+        if (callback(arr[i], i, arr) === true) return i;
     }
-    return false;
+    return -1;
 }
-
-mySome([1,2,3,4,5], function(n){
-    return n > 4;
-})
-
-function myEvery(array, callback){
-    for(let i = 0; i < array.length; i++){
-        if(!callback(arr[i], i , arr)) return false;
-    }
-    return true;
-}
-
-
-myEvery([1,2,3,4,5], function(n){
-    return n > 4;
-})
-    
