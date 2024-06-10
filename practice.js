@@ -394,164 +394,229 @@
 
 //document object model
 
-// document.getElementById("id");
+// // document.getElementById("id");
 
-function holler() {
-    console.log("HOLLER");
-}
+// function holler() {
+//     console.log("HOLLER");
+// }
 
-const whisper = function () {
-    console.log("pst i have a secret");
-};
+// const whisper = function () {
+//     console.log("pst i have a secret");
+// };
 
-//passing functions to toher functions
+// //passing functions to toher functions
 
-function add(x, y) {
-    return x + y;
-}
+// function add(x, y) {
+//     return x + y;
+// }
 
-function subtract(x, y) {
-    return x - y;
-}
+// function subtract(x, y) {
+//     return x - y;
+// }
 
-function multiply(x, y) {
-    return x * y;
-}
+// function multiply(x, y) {
+//     return x * y;
+// }
 
-function divide(x, y) {
-    return x / y;
-}
+// function divide(x, y) {
+//     return x / y;
+// }
 
-const mathFuncs = [add, subtract, multiply, divide];
+// const mathFuncs = [add, subtract, multiply, divide];
 
-// setTimeout(whisper
-// ,1000);
+// // setTimeout(whisper
+// // ,1000);
 
-doMath(5, 6, multiply);
+// doMath(5, 6, multiply);
 
-function doMath(a, b, mathFunc) {
-    return mathFunc(a, b);
-}
+// function doMath(a, b, mathFunc) {
+//     return mathFunc(a, b);
+// }
 
-console.log(doMath(5, 6, multiply));
+// console.log(doMath(5, 6, multiply));
 
-const colors = ["red", "orange", "yellow", "green", "blue", "indigo", "violet"];
+// const colors = ["red", "orange", "yellow", "green", "blue", "indigo", "violet"];
 
-colors.forEach(function (name) {
-    console.log(name.toUpperCase());
-});
+// colors.forEach(function (name) {
+//     console.log(name.toUpperCase());
+// });
 
-const prices = [9.99, 1.5, 19.99, 49.99, 30.5];
-let total = 0;
+// const prices = [9.99, 1.5, 19.99, 49.99, 30.5];
+// let total = 0;
 
-prices.forEach(function (price) {
-    total += price;
-});
-console.log(total);
+// prices.forEach(function (price) {
+//     total += price;
+// });
+// console.log(total);
 
-//for of is newer and more concise
+// //for of is newer and more concise
 
-function myForEach(arr, callback) {
-    for (let i = 0; i < arr.length; i++) {
-        callback(arr[i]);
-    }
-}
+// function myForEach(arr, callback) {
+//     for (let i = 0; i < arr.length; i++) {
+//         callback(arr[i]);
+//     }
+// }
 
-const numbers = [1, 2, 3, 4, 5];
+// const numbers = [1, 2, 3, 4, 5];
 
-const negatives = numbers.map(function (num) {
-    return num * -1;
-});
+// const negatives = numbers.map(function (num) {
+//     return num * -1;
+// });
 
-console.log(negatives);
-console.log(numbers);
+// console.log(negatives);
+// console.log(numbers);
 
-const toDos = [
-    {
-        id: 1,
-        text: "Take out trash",
-        completed: true,
-    },
-    {
-        id: 2,
-        text: "Meeting with boss",
-        completed: true,
-    },
-    {
-        id: 3,
-        text: "Dentist appointment",
-        completed: false,
-    },
-    {
-        id: 4,
-        text: "Take out trash",
-        completed: false,
-    },
-];
+// const toDos = [
+//     {
+//         id: 1,
+//         text: "Take out trash",
+//         completed: true,
+//     },
+//     {
+//         id: 2,
+//         text: "Meeting with boss",
+//         completed: true,
+//     },
+//     {
+//         id: 3,
+//         text: "Dentist appointment",
+//         completed: false,
+//     },
+//     {
+//         id: 4,
+//         text: "Take out trash",
+//         completed: false,
+//     },
+// ];
 
-const todoText = toDos.map(function (todo) {
-    return todo.text;
-});
+// const todoText = toDos.map(function (todo) {
+//     return todo.text;
+// });
 
-console.log(todoText);
+// console.log(todoText);
 
-function myMap(arr, callback) {
-    const mappedArray = [];
-    for (let i of arr) {
+// function myMap(arr, callback) {
+//     const mappedArray = [];
+//     for (let i of arr) {
       
-        mappedArray.push(callback(i));
+//         mappedArray.push(callback(i));
+//     }
+//     return mappedArray;
+// }
+
+// const priorityMap = myMap(toDos, function (todo) {
+//     return todo.completed;
+// });
+
+// console.log(priorityMap);
+
+// // const words = ["asap", "byob", "rsvp", "diy", "lol", "tgif", "tmi"];
+
+// // const words3 = words.filter(function(word){
+// //   return word.length === 3;
+// // // })
+
+// // console.log(words3);
+
+// // const wordsStartWithT = words.filter(function(word){
+// //   return word[0] === "t";
+// // })
+
+// // console.log(wordsStartWithT);
+
+// const noVowels = words.filter(function(word){
+
+// })
+
+// const isVowel = function(char){
+//   return 'aeiou'.indexOf(char) !== -1;
+// }
+
+// const containsVowel = function(word){
+//   for(let char of word){
+//     if(isVowel(char)){
+//       return true;
+//     }
+//   }
+//   return false;
+// };
+
+
+// function myFilter(arr, callback){
+//   const filteredArray = [];
+//   for(let i = 0; i < arr.length; i++){
+//     if(callback(arr[i], i, arr)){
+//       filteredArray.push(arr[i]);
+//     }
+//     return filteredArray;
+// }
+// }
+
+// console.log(myFilter(words, function(word){
+//   return word.length <=10;
+// }));
+
+// const words = ["asap", "byob", "rsvp", "diy", "lol", "tgif", "tmi"];
+
+// words.some(function(word){
+//     return word.length > 3;
+// });
+
+// console.log(words.some(function(word){
+//    return word.indexOf("thyroid") !== -1;
+//     }));
+
+//     console.log(words.every(function(word){
+//         return word.length === 3;
+//     }))
+
+
+//     function allString(arr){
+//         return arr.every(function(el){
+//             return typeof el === "string";
+//         }
+//         )
+//     }
+
+//     const btn = document.querySelector('button');
+//     btn.addEventListener('click', function(element){
+//         const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+//         const allChecked = Array.from(checkboxes).every(function(checkbox){
+//             return checkbox.checked;
+//         })
+//         if(!allChecked){
+//             alert('Please check all boxes');
+//         }
+//     })
+
+//some 
+// iterate over an array and return true if any of the elements meet a certain condition
+// otherwise return false
+
+//every
+// iterate over an array and return true if all of the elements meet a certain condition
+// otherwise return false
+
+function mySome(array, callback){
+    for(let i = 0; i < array.length; i++){
+        if(callback(arr[i], i , arr)) return true;
     }
-    return mappedArray;
+    return false;
 }
 
-const priorityMap = myMap(toDos, function (todo) {
-    return todo.completed;
-});
-
-console.log(priorityMap);
-
-const words = ["asap", "byob", "rsvp", "diy", "lol", "tgif", "tmi"];
-
-const words3 = words.filter(function(word){
-  return word.length === 3;
+mySome([1,2,3,4,5], function(n){
+    return n > 4;
 })
 
-console.log(words3);
-
-const wordsStartWithT = words.filter(function(word){
-  return word[0] === "t";
-})
-
-console.log(wordsStartWithT);
-
-const noVowels = words.filter(function(word){
-
-})
-
-const isVowel = function(char){
-  return 'aeiou'.indexOf(char) !== -1;
-}
-
-const containsVowel = function(word){
-  for(let char of word){
-    if(isVowel(char)){
-      return true;
+function myEvery(array, callback){
+    for(let i = 0; i < array.length; i++){
+        if(!callback(arr[i], i , arr)) return false;
     }
-  }
-  return false;
-};
-
-
-function myFilter(arr, callback){
-  const filteredArray = [];
-  for(let i = 0; i < arr.length; i++){
-    if(callback(arr[i], i, arr)){
-      filteredArray.push(arr[i]);
-    }
-    return filteredArray;
-}
+    return true;
 }
 
-console.log(myFilter(words, function(word){
-  return word.length <=10;
-}));
+
+myEvery([1,2,3,4,5], function(n){
+    return n > 4;
+})
+    
