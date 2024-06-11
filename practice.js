@@ -615,123 +615,195 @@
 
 // // myEvery([1,2,3,4,5], function(n){
 // //     return n > 4;
-// // })
+// // // })
 
-// const scores = [0, 0, 0, 0, 0, 3, 4, 32, 43, 55, 32, 30, 56, 78, 80];
+// // const scores = [0, 0, 0, 0, 0, 3, 4, 32, 43, 55, 32, 30, 56, 78, 80];
 
-// console.log(
-//     scores.find(function (element) {
-//         return element > 80;
-//     })
-// );
+// // console.log(
+// //     scores.find(function (element) {
+// //         return element > 80;
+// //     })
+// // );
 
-// //find returns the value of the first element that is found
+// // //find returns the value of the first element that is found
 
-// console.log(
-//     scores.filter(function (score) {
-//         return score % 2 === 0;
-//     })
-// );
+// // console.log(
+// //     scores.filter(function (score) {
+// //         return score % 2 === 0;
+// //     })
+// // );
 
-// console.log(
-//     scores.findIndex(function (score) {
-//         return score > 34;
-//     })
-// );
+// // console.log(
+// //     scores.findIndex(function (score) {
+// //         return score > 34;
+// //     })
+// // );
 
-// function partition(arr, pivot){
-//     const pivotIndex = arr.findIndex(function(el){
-//         return el > pivot;
-//     })
-//     //using slice because it doesnt mutate the original array
-//     const left = arr.slice(0, pivotIndex);
-//     const right = arr.slice(pivotIndex)
-//     return [left, right]
-// }
-
-// console.log(partition(scores, 0))
-
-// //find and findIndex
-
-// // function myFindIndex(arr, callback) {
-// //     for (let i = 0; i < arr.length; i++) {
-// //         if (callback(arr[i], i, arr) === true) return i;
-// //     }
-// //     return -1;
+// // function partition(arr, pivot){
+// //     const pivotIndex = arr.findIndex(function(el){
+// //         return el > pivot;
+// //     })
+// //     //using slice because it doesnt mutate the original array
+// //     const left = arr.slice(0, pivotIndex);
+// //     const right = arr.slice(pivotIndex)
+// //     return [left, right]
 // // }
 
-// const nums = [3, 4, 34, 34, 34, 34, 34, 32, 34, 564, 75647, 674];
+// // console.log(partition(scores, 0))
 
-// let total = 0;
+// // //find and findIndex
 
-// for (let num of nums) {
-//     total += num;
+// // // function myFindIndex(arr, callback) {
+// // //     for (let i = 0; i < arr.length; i++) {
+// // //         if (callback(arr[i], i, arr) === true) return i;
+// // //     }
+// // //     return -1;
+// // // }
+
+// // const nums = [3, 4, 34, 34, 34, 34, 34, 32, 34, 564, 75647, 674];
+
+// // let total = 0;
+
+// // for (let num of nums) {
+// //     total += num;
+// // }
+
+// // console.log(total);
+
+// // let min = nums[0];
+// // for (let i = 0; i < nums.length; i++) {
+// //     if (nums[i] < min) min = nums[i];
+// // }
+
+// // console.log(min);
+
+// // const str = "lolapalooza";
+
+// // const charFreq = {};
+
+// // for (let char of str) {
+// //     if (charFreq[char]) {
+// //         charFreq[char] += 1;
+// //     } else {
+// //         charFreq[char] = 1;
+// //     }
+// // }
+
+// // console.log(charFreq);
+
+// //using reduce
+// //take an array and boil it down to one thing
+
+// // accepts a callback and an optional second parameter
+
+// let evens = [2, 4, 6, 8, 10];
+
+// evens.reduce(function (accumulator, nextValue) {
+//     return accumulator + nextValue;
+// });
+
+// const words = ["hello", "i", "love", "you"];
+
+// words.reduce(function (accum, nextWord) {
+//     console.log(accum, nextWord);
+//     return accum + " " + nextWord;
+// });
+
+// // const midTermScores = [43, 56, 28, 97, 65, 56];
+
+// // // const minScore = midTermScores.reduce(function(min, nextScore){
+// // //     if(nextScore < min){
+// // //         return nextScore;
+// // //     }
+// // //     return min;
+// // // })
+
+// // // console.log(minScore)
+
+// // const minScore = midTermScores.reduce(function (min, nextScore) {
+// //     return nextScore < min ? nextScore : min;
+// // });
+
+// // console.log(minScore);
+
+// // //passing a value as the second argument
+
+// // const finalScores = [54,67,87,56,45,76,76];
+
+// // const minFinalScore = finalScores.reduce(function(min, nextScore){
+// //     return nextScore < min ? nextScore:min;
+// // }, minScore)
+
+// // console.l
+
+//arrow functions
+
+// [1,2,3].forEach
+
+// function greet(){
+
 // }
 
-// console.log(total);
-
-// let min = nums[0];
-// for (let i = 0; i < nums.length; i++) {
-//     if (nums[i] < min) min = nums[i];
+// const add = function(x,y){
+//     return x + y;
 // }
 
-// console.log(min);
+// const add = (x, y) => {
+//     return x + y;
+// };
 
-// const str = "lolapalooza";
+// console
+//     .log(add(2, 3))
 
-// const charFreq = {};
+//     [(2, 3, 4, 5, 34, 342, 43)].reduce((max, currNum) => {
+//         return Math.max(max, currNum);
+//     })
 
-// for (let char of str) {
-//     if (charFreq[char]) {
-//         charFreq[char] += 1;
-//     } else {
-//         charFreq[char] = 1;
-//     }
-// }
+//     [
+//         //do not take the place of a function declaration
 
-// console.log(charFreq);
+//         //arrow functions shortcuts
 
-//using reduce
-//take an array and boil it down to one thing
+//         (1, 2, 3, 4, 5)
+//     ].forEach((n) => {
+//         console.log(n * 10);
+// //     });
 
-// accepts a callback and an optional second parameter
+// const greet = () => {
+//     console.log("hello");
+// };
 
-let evens = [2, 4, 6, 8, 10];
+// greet()
 
-evens.reduce(function (accumulator, nextValue) {
-    return accumulator + nextValue;
+// [1,23,4,5,6].filter((num) => num % 2 ===0);
+
+// const double = (n) => n * 2;
+
+// //only works with a simple expression
+
+// const dailyRainTotals = [
+//     [1.2, 0.43, 5],
+//     [34, 2.3, 34.2],
+//     [2, 3, 2.3],
+// ];
+
+// dailyRainTotals.map((hourlyRainTotals) => {
+//     return hourlyRainTotals.reduce((sum,inchesOfRain) => {
+//         return sum + inchesOfRain;
+//     });
+// });
+
+//2 things to look out for when writing arrow functions
+
+const makeMath = (num) => ({
+    double: num * 2,
+    square: num * num,
 });
 
-const words = ["hello", "i", "love", "you"];
+console.log(makeMath(23));
 
-words.reduce(function (accum, nextWord) {
-    console.log(accum, nextWord);
-    return accum + " " + nextWord;
-});
-
-const midTermScores = [43, 56, 28, 97, 65, 56];
-
-// const minScore = midTermScores.reduce(function(min, nextScore){
-//     if(nextScore < min){
-//         return nextScore;
-//     }
-//     return min;
-// })
-
-// console.log(minScore)
-
-const minScore = midTermScores.reduce(function (min, nextScore) {
-    return nextScore < min ? nextScore : min;
-});
-
-console.log(minScore);
-
-//passing a value as the second argument
-
-const finalScores = [54,67,87,56,45,76,76];
-
-const minFinalScore = finalScores.reduce(function(min, nextScore){
-    return nextScore < min ? nextScore:min;
-}, minScore)
-
-console.l
+const cat = {
+    name: "chris",
+    meow: function() {
+        return `${this.name} says MEOW`;
+    }
