@@ -49,16 +49,14 @@ console.log(mergeObjects(testObject, testObject2));
 
 //double and return args
 
-const doubleAndReturnArgs = (arr, ...args) => [...arr, ...args.map(v => v * 2)]
+const doubleAndReturnArgs = (arr, ...args) => [
+    ...arr,
+    ...args.map((v) => v * 2),
+];
 
 // function doubleAndReturnArgs(arr, ...args){
 //     return [...arr, ...args.map((e) => e * 2)]
 // }
-
-
-
-
-
 
 //slice and dice
 
@@ -66,40 +64,49 @@ const doubleAndReturnArgs = (arr, ...args) => [...arr, ...args.map(v => v * 2)]
 and return a new array without that item. */
 
 function removeRandom(items) {
-    
+    const randomNum = Math.floor(Math.random() * items.length);
+    console.log(randomNum);
 
+    return [...items.slice(0, randomNum), ...items.slice(randomNum + 1)];
 }
+
+console.log(removeRandom([1, 2, 3, 4, 5, 6]));
 
 /** Return a new array with every item in array1 and array2. */
 
 function extend(array1, array2) {
-
+    return [...array1, ...array2];
 }
+
+console.log(extend([1, 2, 3, 4, 5, 5], [1, 2, 32, 24, 124]));
 
 /** Return a new object with all the keys and values
 from obj and a new key/value pair */
 
 function addKeyVal(obj, key, val) {
-
+    return {...obj, [key]: val};
 }
-
 
 /** Return a new object with a key removed. */
+// _[key] used to remove key from the object
 
-function removeKey(obj, key) {
-
-}
-
+    function removeKey(obj, key) {
+        const newObj = { ...obj };
+        delete newObj[key];
+   
+        return newObj;
+    }
 
 /** Combine two objects and return a new object. */
 
 function combine(obj1, obj2) {
-
+    return {...obj1, ...obj2};
 }
-
 
 /** Return a new object with a modified key and value. */
 
-function update(obj, key, val) {
-
+function update(obj, key, val) 
+{
+    const newObj = {...obj, [key]: val}
+    return newObj;
 }
