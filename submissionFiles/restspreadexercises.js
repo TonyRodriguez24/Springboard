@@ -66,7 +66,7 @@ const doubleAndReturnArgs = (arr, ...args) => [...arr, ...args.map(v => v * 2)]
 and return a new array without that item. */
 
 function removeRandom(items) {
-    Math.floor(Math.random(items.length) * 10)
+    
 
 }
 
