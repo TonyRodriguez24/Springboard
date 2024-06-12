@@ -795,15 +795,80 @@
 
 //2 things to look out for when writing arrow functions
 
-const makeMath = (num) => ({
-    double: num * 2,
-    square: num * num,
-});
+// const makeMath = (num) => ({
+//     double: num * 2,
+//     square: num * num,
+// });
 
-console.log(makeMath(23));
+// console.log(makeMath(23));
 
-const cat = {
-    name: "chris",
-    meow: function() {
-        return `${this.name} says MEOW`;
-    }
+// const cat = {
+//     name: "chris",
+//     meow: function() {
+//         return `${this.name} says MEOW`;
+//     }
+
+// const filterByType = (type, ...vals) => {
+//     return vals.filter((v) => typeof v === type);
+// };
+
+//spread
+Math.max(2, 3, 4, 5);
+
+const nums = [3, 4, 3, 3, 4, 2, 34];
+
+console.log(Math.max(...nums));
+
+const filterByType = (type, ...vals) => {
+    return vals.filter((v) => typeof v === type);
+};
+
+const things = [32, 43, true, false, "hello"];
+
+console.log(filterByType("number", ...things));
+
+console.log(4, 3, 34, 34, 4);
+
+console.log(..."hello");
+
+//spread arrays
+
+const palette = ["lavender", "yellow", "orchid"];
+
+const paletteCopy = ["sky blue", ...palette, "grass green"];
+const paletteCopy2 = palette.slice();
+
+console.log(paletteCopy);
+console.log(paletteCopy2);
+
+console.log(palette.concat("deep purple"));
+
+const vowels = "aeiou";
+
+const vowelsArray = [...vowels];
+
+const tea = {
+    type: "oolong",
+    name: "winter sprout",
+    origin: "taiwan",
+};
+
+//objects are not an iterable iN JS
+// can use ... in an empty object to create a copy
+
+// this would not work for(let x of tea)
+
+const tea2 = { ...tea };
+
+console.log(tea2);
+
+const teaTin = {...tea, price: 22.99}
+console.log(teaTin)
+
+
+
+//order matters for conflicting properties
+
+const newTea = {...tea, name: "golden frost"}
+
+
