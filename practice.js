@@ -812,118 +812,214 @@
 //     return vals.filter((v) => typeof v === type);
 // };
 
-//spread
-Math.max(2, 3, 4, 5);
+// //spread
+// Math.max(2, 3, 4, 5);
 
-const nums = [3, 4, 3, 3, 4, 2, 34];
+// const nums = [3, 4, 3, 3, 4, 2, 34];
 
-console.log(Math.max(...nums));
+// console.log(Math.max(...nums));
 
-const filterByType = (type, ...vals) => {
-    return vals.filter((v) => typeof v === type);
-};
+// const filterByType = (type, ...vals) => {
+//     return vals.filter((v) => typeof v === type);
+// };
 
-const things = [32, 43, true, false, "hello"];
+// const things = [32, 43, true, false, "hello"];
 
-console.log(filterByType("number", ...things));
+// console.log(filterByType("number", ...things));
 
-console.log(4, 3, 34, 34, 4);
+// console.log(4, 3, 34, 34, 4);
 
-console.log(..."hello");
+// console.log(..."hello");
 
-//spread arrays
+// //spread arrays
 
-const palette = ["lavender", "yellow", "orchid"];
+// const palette = ["lavender", "yellow", "orchid"];
 
-const paletteCopy = ["sky blue", ...palette, "grass green"];
-const paletteCopy2 = palette.slice();
+// const paletteCopy = ["sky blue", ...palette, "grass green"];
+// const paletteCopy2 = palette.slice();
 
-console.log(paletteCopy);
-console.log(paletteCopy2);
+// console.log(paletteCopy);
+// console.log(paletteCopy2);
 
-console.log(palette.concat("deep purple"));
+// console.log(palette.concat("deep purple"));
 
-const vowels = "aeiou";
+// const vowels = "aeiou";
 
-const vowelsArray = [...vowels];
+// const vowelsArray = [...vowels];
 
-const tea = {
-    type: "oolong",
-    name: "winter sprout",
-    origin: "taiwan",
-};
+// // const tea = {
+//     type: "oolong",
+//     name: "winter sprout",
+//     origin: "taiwan",
+// };
 
 //objects are not an iterable iN JS
-// can use ... in an empty object to create a copy
+// // can use ... in an empty object to create a copy
 
-// this would not work for(let x of tea)
+// // this would not work for(let x of tea)
 
-const tea2 = { ...tea };
+// const tea2 = { ...tea };
 
-console.log(tea2);
+// console.log(tea2);
 
-const teaTin = { ...tea, price: 22.99 };
-console.log(teaTin);
+// const teaTin = { ...tea, price: 22.99 };
+// console.log(teaTin);
 
-//order matters for conflicting properties
+// //order matters for conflicting properties
 
-const newTea = { ...tea, name: "golden frost" };
+// const newTea = { ...tea, name: "golden frost" };
 
-function makePerson(first, last, age) {
+// function makePerson(first, last, age) {
+//     return {
+//         first: first,
+//         last: last,
+//         age: age,
+//         isAlive: true,
+//     };
+// }
+
+// //shorthanding it
+
+// function makePerson(first, last, age) {
+//     return {
+//         first,
+//         last,
+//         age,
+//         isAlive: true,
+//     };
+// }
+
+// //object methods - create methods in an object
+
+// const mathStuff = {
+//     x: 200,
+//     add(a, b) {
+//         return a + b;
+//     },
+//     square(a) {
+//         return a * a;
+//     },
+// };
+
+// console.log(mathStuff.square(9));
+
+// //do not use arrow functions here
+
+// function makeColor(name, hex) {
+//     const color = {};
+//     color[name] = hex;
+//     color[hex] = name;
+//     return color;
+// }
+
+// function makeColor(name, hex) {
+//     return {
+//         [name]: hex,
+//         [hex]: name,
+//     };
+// }
+
+// const mystery = {
+//     [6 + 7]: "thirteen",
+// };
+
+// const obj = {};
+// obj[6 + 7] = "thirteen";
+
+const teaOrder = {
+    variety: "oolong",
+    teaName: "winter sprout",
+    origin: "taiwan",
+    price: 12.99,
+    hasCaffeine: true,
+    quantity: 4,
+};
+
+// const price = teaOrder.price;
+// const quantity = teaOrder.quantity;
+// const teaName = teaOrder.teaName;
+
+//faster way to do this
+
+//need curly braces
+const { price, quanity, ...others } = teaOrder;
+
+console.log(others);
+
+//setting a default value
+const { brewTemp: temp = 175 } = teaOrder;
+
+//renaming the variable with destructuring
+const { teaName: tea } = teaOrder;
+console.log(tea);
+
+function checkout(tea) {
+    const { quantity = 1, price } = tea;
+    return quantity * price;
+}
+
+console.log(checkout(teaOrder));
+
+//values in array associated index, object named properites
+
+const students = [
+    { name: "Drake", grade: 88 },
+    { name: "Jasmine", grade: 93 },
+    { name: "Miles", grade: 78 },
+    { name: "Sophie", grade: 67 },
+    { name: "Katie", grade: 89 },
+];
+
+const [topStudent, secondBest] = students;
+
+console.log(topStudent, secondBest);
+
+
+//destructuring functions
+
+function getTotal({ price, quantity = 1 }) {
+    return price * quantity;
+}
+
+console.log(getTotal(teaOrder));
+
+const longJumpResults = ["Tammy", "Jasmine", "Miles", "Sophie", "Katie"];
+const swimMeetResults = ["Tammy", "Jasmine", "Miles", "Sophie", "Katie"];
+
+
+function awardMedals([gold, silver, bronze]) {
     return {
-        first: first,
-        last: last,
-        age: age,
-        isAlive: true,
+        gold, silver, bronze
     };
 }
 
-//shorthanding it
+//destructuring nested objects
 
-function makePerson(first, last, age) {
-    return {
-        first,
-        last,
-        age,
-        isAlive: true,
-    };
-}
-
-//object methods - create methods in an object
-
-const mathStuff = {
-    x: 200,
-    add(a, b) {
-        return a + b;
+const movie = {
+    Title: "The Godfather",
+    Director: "Francis Ford Coppola",
+    Year: 1972,
+    Rated: {
+        rating: "R",
+        advisory: "Restricted",
     },
-    square(a) {
-        return a * a;
+    actors: ["Marlon Brando", "Al Pacino", "James Caan"],
+    awards: {
+        wins: 9,
+        nominations: 10,
     },
 };
 
-console.log(mathStuff.square(9));
+// const { Rated } = movie;
 
-//do not use arrow functions here
+// const { rating, advisory } = Rated;
 
+const { Rated: { rating, advisory: note } } = movie;
 
-function makeColor(name, hex)
-{
-    const color = {};
-    color[name] = hex;
-    color[hex] = name;
-    return color;
-}
+const { actors: [lead, secondNoteable, third] } = movie;
+console.log(lead, secondNoteable, third);
 
-function makeColor(name,hex){
-    return{
-        [name] : hex,
-        [hex] : name
-    };
-}
+let delicious = "mayo";
+let disgusting = "jelly";
 
-const mystery = {
-    [6+7]: "thirteen"
-};
-
-const obj = {}
-obj[6+7] = "thirteen";
+[delicious, disgusting] = [disgusting, delicious];
