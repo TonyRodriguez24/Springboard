@@ -862,13 +862,68 @@ const tea2 = { ...tea };
 
 console.log(tea2);
 
-const teaTin = {...tea, price: 22.99}
-console.log(teaTin)
-
-
+const teaTin = { ...tea, price: 22.99 };
+console.log(teaTin);
 
 //order matters for conflicting properties
 
-const newTea = {...tea, name: "golden frost"}
+const newTea = { ...tea, name: "golden frost" };
+
+function makePerson(first, last, age) {
+    return {
+        first: first,
+        last: last,
+        age: age,
+        isAlive: true,
+    };
+}
+
+//shorthanding it
+
+function makePerson(first, last, age) {
+    return {
+        first,
+        last,
+        age,
+        isAlive: true,
+    };
+}
+
+//object methods - create methods in an object
+
+const mathStuff = {
+    x: 200,
+    add(a, b) {
+        return a + b;
+    },
+    square(a) {
+        return a * a;
+    },
+};
+
+console.log(mathStuff.square(9));
+
+//do not use arrow functions here
 
 
+function makeColor(name, hex)
+{
+    const color = {};
+    color[name] = hex;
+    color[hex] = name;
+    return color;
+}
+
+function makeColor(name,hex){
+    return{
+        [name] : hex,
+        [hex] : name
+    };
+}
+
+const mystery = {
+    [6+7]: "thirteen"
+};
+
+const obj = {}
+obj[6+7] = "thirteen";
