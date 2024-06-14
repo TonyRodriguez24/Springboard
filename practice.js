@@ -1023,3 +1023,104 @@ let delicious = "mayo";
 let disgusting = "jelly";
 
 [delicious, disgusting] = [disgusting, delicious];
+
+
+const myMap = new Map();
+myMap.set(7, "seven")
+myMap.set("7")
+
+
+console.log(myMap.get(7))
+
+const empty = [];
+myMap.set(empty, "empty array")
+
+
+const add = (x, y) => x + y;
+const mult = (x, y) => x * y;
+
+const funcCalls = new Map();
+
+funcCalls.set(add, 2);
+funcCalls.set(mult, 9);
+
+funcCalls.get(add);
+funcCalls.get(mult);
+
+
+
+
+
+//built in methods
+const bandData = [
+    [3, "3 doors down"],
+    ["three", "Three dog night"],
+    ["nine", "Nine inch nails"],
+    ["four", "The four seasons"],
+    [41, "sum 41"]];
+
+const bandMap = new Map(bandData);
+
+console.log(bandMap)
+
+console.log([...bandMap])
+
+
+bandMap.set(182, "Blink 182").set("twenty", "matchbox twenty")
+
+
+bandMap.has(41)
+
+//delete deletes a pair off a key
+
+bandMap.delete("twenty")
+
+
+bandMap.keys() //collects all of the keys
+bandMap.values();
+
+//looping with maps
+// for of and for each
+
+//maps are ordered based off insertion
+
+//objects dont have a set order
+
+
+console.log(bandMap.size);
+
+
+// console.log(bandMap.forEach((val, key) => {
+//     console.log(key + "=> " + val)
+// }))
+
+for (let [key, value] of bandMap) {
+    console.log(key, "=", value);
+}
+//objects are not iterables
+//maps are
+
+
+//sets
+//collection of unique values
+//no duplicates
+//no order
+//no keys
+//no values
+//no pairs
+
+//can pass an array to a set
+const bannedHashTags = new Set(["nofilter", "blessed", "yolo", "tbt", "dogsofinstagram"]);
+
+//only takes one iterable
+
+bannedHashTags.add("selfie");
+console.log(bannedHashTags);
+
+bannedHashTags.has("tbt");
+bannedHashTags.delete("tbt");
+
+function filterHashTags(tags){
+    tags.filter((tag) => !bannedHashTags.has(tag));
+}
+
