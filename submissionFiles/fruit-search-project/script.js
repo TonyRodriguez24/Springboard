@@ -5,8 +5,8 @@ const fruits = ['Apple', 'Apricot', 'Avocado 🥑', 'Banana', 'Bilberry', 'Black
 
 //search logic
 function search(string) {
+	//array that stores fruits that includes value of string
 	const results = [];
-
 	for (let fruit of fruits) {
 		if (fruit.toLowerCase().includes(string.toLowerCase())) {
 			results.push(fruit)
@@ -18,6 +18,7 @@ function search(string) {
 
 //handle the searching
 function searchHandler(event) {
+	//triggers the search logic
 	const inputValue = event.target.value;
 	const results = search(inputValue)
 	showSuggestions(results, inputValue);
@@ -42,6 +43,7 @@ function showSuggestions(results, inputValue) {
 
 //use suggested word
 function useSuggestion(e) {
+	//sets the value of input to the fruit clicked
 	input.value = e.target.innerText;
 	suggestions.innerHTML = "";
 }
