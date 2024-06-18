@@ -1120,7 +1120,30 @@ console.log(bannedHashTags);
 bannedHashTags.has("tbt");
 bannedHashTags.delete("tbt");
 
-function filterHashTags(tags){
+function filterHashTags(tags) {
     tags.filter((tag) => !bannedHashTags.has(tag));
 }
 
+const rightTriangle = {
+    a: 9,
+    b: 12,
+    getArea: function () {
+        return this.a * this.b / 2;
+    }
+};
+
+class Triangle {
+    constructor(a, b) {
+        this.a = a;
+        this.b = b;
+
+    }
+
+}
+
+const t1 = new Triangle(10, 20);
+Triangle.prototype.getArea = function () {
+    return this.a * this.b / 2;
+};
+
+console.log(t1.getArea())
