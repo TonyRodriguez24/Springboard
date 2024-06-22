@@ -1084,66 +1084,92 @@ bandMap.values();
 
 //maps are ordered based off insertion
 
-//objects dont have a set order
+// //objects dont have a set order
 
 
-console.log(bandMap.size);
+// console.log(bandMap.size);
 
 
-// console.log(bandMap.forEach((val, key) => {
-//     console.log(key + "=> " + val)
-// }))
+// // console.log(bandMap.forEach((val, key) => {
+// //     console.log(key + "=> " + val)
+// // }))
 
-for (let [key, value] of bandMap) {
-    console.log(key, "=", value);
+// for (let [key, value] of bandMap) {
+//     console.log(key, "=", value);
+// }
+// //objects are not iterables
+// //maps are
+
+
+// //sets
+// //collection of unique values
+// //no duplicates
+// //no order
+// //no keys
+// //no values
+// //no pairs
+
+// //can pass an array to a set
+// const bannedHashTags = new Set(["nofilter", "blessed", "yolo", "tbt", "dogsofinstagram"]);
+
+// //only takes one iterable
+
+// bannedHashTags.add("selfie");
+// console.log(bannedHashTags);
+
+// bannedHashTags.has("tbt");
+// bannedHashTags.delete("tbt");
+
+// function filterHashTags(tags) {
+//     tags.filter((tag) => !bannedHashTags.has(tag));
+// }
+
+// const rightTriangle = {
+//     a: 9,
+//     b: 12,
+//     getArea: function () {
+//         return this.a * this.b / 2;
+//     }
+// };
+
+// class Triangle {
+//     constructor(a, b) {
+//         this.a = a;
+//         this.b = b;
+
+//     }
+
+// }
+
+// const t1 = new Triangle(10, 20);
+// Triangle.prototype.getArea = function () {
+//     return this.a * this.b / 2;
+// };
+
+// console.log(t1.getArea())
+
+//.call
+
+const dog = {
+    breed: "Black Lab",
+    name: "elton"
 }
-//objects are not iterables
-//maps are
 
+//probably wont use call all that often
 
-//sets
-//collection of unique values
-//no duplicates
-//no order
-//no keys
-//no values
-//no pairs
+//bind is useful
 
-//can pass an array to a set
-const bannedHashTags = new Set(["nofilter", "blessed", "yolo", "tbt", "dogsofinstagram"]);
-
-//only takes one iterable
-
-bannedHashTags.add("selfie");
-console.log(bannedHashTags);
-
-bannedHashTags.has("tbt");
-bannedHashTags.delete("tbt");
-
-function filterHashTags(tags) {
-    tags.filter((tag) => !bannedHashTags.has(tag));
+function applySalesTax(taxRate, price) {
+    return price + price * taxRate;
 }
 
-const rightTriangle = {
-    a: 9,
-    b: 12,
-    getArea: function () {
-        return this.a * this.b / 2;
-    }
-};
+console.log(applySalesTax(0.07, 100));
 
-class Triangle {
-    constructor(a, b) {
-        this.a = a;
-        this.b = b;
+const applyCaliforniaTax = applySalesTax.bind(null, 0.09);
 
-    }
+//bind callbacks
 
-}
-
-const t1 = new Triangle(10, 20);
-Triangle.prototype.getArea = function () {
-    return this.a * this.b / 2;
-};
-
-console.log(t1.getArea())
+const button = document.querySelector('button');
+button.addEventListener('click', function () {
+    console.log(this);
+});
