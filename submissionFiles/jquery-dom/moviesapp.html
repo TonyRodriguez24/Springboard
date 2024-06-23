@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Movies App</title>
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/bootstrap/dist/css/bootstrap.css" />
+    <style></style>
+  </head>
+
+  <body>
+    <form>
+      <input type="text" id="title" placeholder="Enter movie title" />
+      <input type="text" id="rating" placeholder="Enter movie rating" />
+      <button type="submit">Submit</button>
+    </form>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+    <script>
+      $("form button").on("click", function (e) {
+        e.preventDefault();
+        const title = $("#title").val();
+        const rating = $("#rating").val();
+        if (rating > 10 || rating < 0) {
+          alert("Rating must be between 0 and 10");
+          return;
+        }
+        const newMovie = $("<li>").text(title + ": " + rating);
+        if ($("body").find("ul").length === 0) {
+          $("body").append("<ul></ul>");
+        }
+        if(title === "" || rating === "") {
+          alert("Please enter a title and rating");
+          return;
+        }
+        $("ul").append(newMovie).append("<button class = 'delete-button'>Delete</button>");
+        $("#title").val("");
+        $("#rating").val("");
+
+      });
+
+        $("body").on("click", ".delete-button", function () {
+            $(this).prev().remove();
+            $(this).remove();
+        });
+    </script>
+  </body>
+</html>

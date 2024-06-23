@@ -74,7 +74,34 @@
 </div>
 <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
 <script>
-  // Add your code here!
+  $(document).ready(function() {
+    console.log("Let's get ready to party with jQuery!");
+  });
+
+  $("article img").addClass("image-center");
+
+  $("article p").last().remove();
+
+  $("#title").css("font-size", Math.random() * 101);
+
+  $("aside ol").append("<li>New list item</li>");
+
+  $("aside ol").empty().append("<p>Sorry for the list.</p>");
+
+  $("input[type = 'number']").on("input", function(){
+    const r = $("input").eq(0).val();
+    const g = $("input").eq(1).val();
+    const b = $("input").eq(2).val();
+    bgColor = "rgb(" + r + "," + g + "," + b + ")";
+    $("body").css("background-color", bgColor);
+  });
+
+  $("img").on("click", function(){
+    $(this).remove();
+  })
+    
+
+</script>
 </script>
 </body>
 
