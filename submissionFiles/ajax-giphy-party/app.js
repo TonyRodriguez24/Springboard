@@ -58,13 +58,4 @@ $(document).ready(function () {
 
 });
 
-//notes of what has to be done 
-
-//we get the data
-
-//we set the src of the image to the url from the data
-
-//search for gif
-//word is added into api access somehow idk yet
-
 
