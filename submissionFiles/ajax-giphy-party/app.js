@@ -3,9 +3,6 @@ console.log("Let's get this party started!");
 
 $(document).ready(function () {
 
-
-
-
     async function getGif() {
         try {
             const searchTerm = $("#input").val();
@@ -20,21 +17,14 @@ $(document).ready(function () {
                     }
                 });
 
-            console.log(result)
-
             const gifsArray = result.data.data;
 
             if (gifsArray.length > 0) {
-                //for each gif in the gif array set the url to the url in the data 
-
                 for (let i = 0; i < gifsArray.length; i++) {
                     const gifURL = gifsArray[0].images.fixed_height.url;
                     $(".image-container").append(`<img src = '${gifURL}' class = 'gifs'/>`)
                 }
-
             }
-
-
             else {
                 console.log("no gifs were found")
             }
@@ -57,14 +47,5 @@ $(document).ready(function () {
 
 
 });
-
-//notes of what has to be done 
-
-//we get the data
-
-//we set the src of the image to the url from the data
-
-//search for gif
-//word is added into api access somehow idk yet
 
 
