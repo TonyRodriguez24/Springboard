@@ -45,7 +45,6 @@ $(document).ready(function () {
         $(".image-container").children(".gifs").last().remove();
     })
 
-
 });
 
 
