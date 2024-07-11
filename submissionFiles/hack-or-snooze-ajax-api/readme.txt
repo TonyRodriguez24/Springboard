@@ -1,0 +1,1 @@
+I was spending a lot of time and on this and for most of it I wasn't really getting it and it was confusing, thats why its mostly unfinished. I was getting a little frustrated with myself and I just wanted to start the other sections.
