@@ -25,7 +25,26 @@ class Story {
 
   getHostName() {
     // UNIMPLEMENTED: complete this function!
-    return "hostname.com";
+    var j = baseurl.indexOf("://");
+
+
+    var host = "";
+
+
+    for (i = j + 3; i < baseurl.length; i++) {
+
+      if (baseurl.charAt(i) != '/') {
+
+        host = host + "" + baseurl.charAt(i);
+
+      } else {
+
+        break;
+
+      }
+
+    }
+    return;
   }
 }
 
@@ -110,7 +129,7 @@ class StoryList {
     await axios({
       url: `${BASE_URL}/stories/${storyID}`,
       method: "DELETE",
-      data: { token }
+      data: { token:user.loginToken }
     })
 
 
@@ -253,18 +272,18 @@ class User {
 
   async removeFavorite(story) {
     this.favorites = this.favorites.filter(s => s.storyId !== story.storyId);
-    await this._addOrRemoveFavorite("remove", story);
+    await this.addOrRemoveFavorite("remove", story);
   }
 
-  async addOrRemoveFavorite(newState, story){
+  async addOrRemoveFavorite(newState, story) {
     //shorthand if else statement to determine if we are adding or removing the story
     const method = newState === "add" ? "POST" : "DELETE";
     // if newState === add then we will use the POST method if it is remove then we will use the DELETE method
     const token = this.loginToken;
-    
+
     //await the axios call to the API
     await axios({
-      url: `${BASE_URL}/users/${this.username}/favorites/${story.storyId}`  ,
+      url: `${BASE_URL}/users/${this.username}/favorites/${story.storyId}`,
       method: method,
       data: { token }
     })
@@ -272,7 +291,7 @@ class User {
 
   }
 
-  
+
   isFavorite(story) {
     return this.favorites.some(s => (s.storyId === story.storyId));
   }
