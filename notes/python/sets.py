@@ -32,3 +32,11 @@ orange = ["orange", "sweet", "citrus"]
 
 
 print(lemon.union(banana, orange))
+
+#sets are iterables
+
+for item in lemon:
+    print(item)
+
+for item in lemon | banana:
+    print(item)
