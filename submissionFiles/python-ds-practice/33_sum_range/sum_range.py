@@ -20,6 +20,14 @@ def sum_range(nums, start=0, end=None):
 
     If end is after end of list, just go to end of list:
 
-        >>> sum_range(nums, 1, 99)
+        >>> 
         9
     """
+    if end is None:
+        end = len(nums) -1
+
+    return sum(nums[start:end + 1])
+
+nums = [1, 2, 3, 4]
+
+print(sum_range(nums, 1, 3))
