@@ -16,3 +16,14 @@ def friend_date(a, b):
         >>> friend_date(sauron, gandalf)
         True
     """
+
+    a_set = set(a[2])
+    b_set = set(b[2])
+
+    in_common = a_set & b_set
+
+    return bool(in_common)
+
+elmo = ('Elmo', 5, ['hugging', 'being nice'])
+sauron = ('Sauron', 5000, ['killing hobbits', 'chess'])
+print(friend_date(elmo, sauron))

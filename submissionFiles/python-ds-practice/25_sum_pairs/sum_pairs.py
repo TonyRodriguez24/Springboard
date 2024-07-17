@@ -21,3 +21,20 @@ def sum_pairs(nums, goal):
         >>> sum_pairs([11, 20, 4, 2, 1, 5], 100)
         ()
     """
+
+    #we use the complement and check it against seen
+
+    seen = set()
+
+    for num in nums:
+        #we set the complement = to the target goal - the current number
+        complement = goal - num
+        #if the complement is in the seen set then we found a match so we return the tuple
+        if complement in seen:
+            return (complement, num)
+        seen.add(num)
+
+    return ()
+
+print(sum_pairs([5, 1, 4, 8, 3, 2], 7))
+    
