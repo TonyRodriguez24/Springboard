@@ -10,4 +10,12 @@ def min_max_keys(d):
         ('apple', 'cherry')
     """
 
-    
+    # get all the keys from the dictionary 
+    keys = d.keys()
+
+    min_key = min(keys)
+    max_key = max(keys)
+
+    return (min_key, max_key)
+
+print(min_max_keys({"apple": "red", "cherry": "red", "berry": "blue"}))
