@@ -50,3 +50,9 @@ webbrowser.open("https://www.google.com")
 #tkinter used for GUI
 
 import turtle
+
+#writing one class per file is a good practice
+
+
+#from blank import blank
+
