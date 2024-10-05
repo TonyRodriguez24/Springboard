@@ -18,6 +18,11 @@ class Triangle:
     def random(cls):
         return cls(randint(1,20), randint(1,20))
 
+    def __repr__(self):
+        return f"Triangle(a = {self.a}, b =  {self.b})"
+    
+    def __str__(self):
+        return self.describe()
 
     def get_hypotenuse(self):
         return sqrt(self.a**2 + self.b**2)
@@ -31,3 +36,6 @@ class Triangle:
 t = Triangle.random()
 print(t.get_area())
 print(t.get_hypotenuse())
+
+
+print(str(t))
