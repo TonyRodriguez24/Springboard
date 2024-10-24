@@ -1,0 +1,18 @@
+explain what HTML templates are
+using jinja to create HTML templates
+serve static files with Flask
+
+View functions return string
+
+routes define the url @app.route
+def ex():
+    return ...
+
+using templates to produce HTML
+can have dynamic templates
+
+Jinja is a popular template system for Python used by Flask
+
+{%for VAR in ITERABLE %}
+HTML
+{%end for%}

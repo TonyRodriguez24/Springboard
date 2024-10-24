@@ -1,0 +1,18 @@
+{% extends "base.html" %} {% block title %}Madlibs{% endblock %} {%block
+header%}{%endblock%} {%block content%}
+<h1>Make your own story!</h1>
+<form
+  action="{{  url_for('finished_story', story_id = story_id) }}"
+  method="post">
+  <ul>
+    {%for prompt in prompts%}
+    <li>
+      <label for="{{prompt}}"> {{prompt}}</label>
+      <input type="text" name="{{prompt}}" required />
+    </li>
+    {%endfor%}
+  </ul>
+
+  <button>Submit</button>
+</form>
+{%endblock%}

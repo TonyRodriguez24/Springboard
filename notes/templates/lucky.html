@@ -1,0 +1,14 @@
+{% extends "base.html" %} {%block content%} {%block title%}Greeter Form
+2{%endblock%}
+<body>
+    <!-- variable -->
+    <h1>Your lucky number is {{ lucky_num }}</h1>
+
+    <!-- conditional -->
+    {% if lucky_num == 3%}
+    <h2>That's my lucky number</h2>
+    {% else %}
+    <h2>I dont like that number</h2>
+    {% endif %}
+</body>
+{%endblock%}

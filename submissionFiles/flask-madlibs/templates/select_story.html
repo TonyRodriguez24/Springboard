@@ -1,0 +1,10 @@
+{% extends "base.html" %} {% block title %}Story Selection{% endblock %} {%block
+header%}Choose Your Story{%endblock%} {%block content%}
+  <ul>
+    {%for story_id, story in stories.items()%}
+    <li>
+      <a href="story/{{story_id}}/form">{{story.story_title}}</a>
+    </li>
+    {%endfor%}
+  </ul>
+{%endblock%}

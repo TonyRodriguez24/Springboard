@@ -1,23 +1,66 @@
-from flask import Flask, request
+from flask import Flask, request, render_template, redirect
+from flask_debugtoolbar import DebugToolbarExtension
+from random import randint, choice, sample
 
 app = Flask(__name__)
 
+#pip install flask-debugtoolbar
+app.config["SECRET_KEY"] = "Chickensarecool"
+app.congif["DEBUG_TB_INTERCEPT_REDIRECTS"] = False
+debug = DebugToolbarExtension(app)
+
 @app.route("/")
 def home_page():
-    return "Welcome to my simple application"
+        return render_template("base.html")
 
-print("hi")
+#redirects
+@app.route("/old-home-page")
+def redirect_to_home():
+    """redirects to new home page"""
+    return redirect("/")
+
+@app.route("/lucky")
+def lucky_number():
+    num = randint(1,20)
+    return render_template("lucky.html", lucky_num = num)
+
+compliments = ["cool", "tenacious", "nice", "warm", "thankful"]
+
+
+#this page shows us the form
+@app.route("/form")
+def show_form():
+    return render_template("form.html")
+
+
+@app.route("/form2")
+def show_form2():
+    return render_template("form_2.html")
+
+@app.route("/greet2")
+def get_greeting2():
+    username = request.args["username"]
+    wants = request.args.get("wants_compliments")
+    nice_things = sample(compliments, 3)
+    return render_template("greet2.html", username = username, wants_compliments = wants, compliments=nice_things)
+
+@app.route("/spell/<word>")
+def spell_word(word):
+    return render_template("spell_word.html", word = word)
+
+
+
+
+@app.route("/greeting")
+def get_greeting():
+    username = request.args["username"]
+    nice_thing = choice(compliments)
+    return render_template("greeting.html", username = username, compliment = nice_thing)
+
 
 @app.route("/hello")
 def say_hello():
-    html ="""
-    <html>
-        <body>
-            <h1>Hello</h1>
-        </body>
-    </html>
-    """
-    return html
+    return render_template("hello.html")
 
 @app.route("/goodbye")
 def say_bye():
@@ -91,6 +134,11 @@ def show_subreddit(subreddit):
 #whatever variable name is you need a matching parameter
 #keyword argument func(person = "fdsafdsaf")
 
+@app.route("/r/<subreddit>/comments/<int:post_id>")
+def show_comments(subreddit,post_id):
+    return f"Viewing comments for post {post_id} from {subreddit} subreddit"
+
+
 POSTS = {
     1: "I like chicken tenders",
     2: "I hate mayo",
@@ -103,3 +151,20 @@ POSTS = {
 def find_post(id):
     post = POSTS.get(id, "Post not found") #.get method you can provide a default value if it is not found
     return f"<p>{post}</p>"
+
+#can have multiple variables in path names
+
+#Query params vs URL Params
+
+# URL parameter
+# /shop/<toy>
+# feels more like the subject of the home_page
+
+# Query parameter
+# /shop?toy=elmo
+# Feels more like extra information about the page
+# Often used when coming from form
+
+# /r/<subreddit>/comments/
+
+#query string is additional info
