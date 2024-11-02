@@ -1,4 +1,4 @@
-from flask import Flask, request, render_template, redirect
+from flask import Flask, request, render_template, redirect, flash, jsonify
 from flask_debugtoolbar import DebugToolbarExtension
 from random import randint, choice, sample
 
@@ -6,8 +6,14 @@ app = Flask(__name__)
 
 #pip install flask-debugtoolbar
 app.config["SECRET_KEY"] = "Chickensarecool"
-app.congif["DEBUG_TB_INTERCEPT_REDIRECTS"] = False
+app.config["DEBUG_TB_INTERCEPT_REDIRECTS"] = False
 debug = DebugToolbarExtension(app)
+
+def my_function():
+    import pdb
+    pdb.set_trace()
+    #python debugging
+
 
 @app.route("/")
 def home_page():
@@ -16,8 +22,41 @@ def home_page():
 #redirects
 @app.route("/old-home-page")
 def redirect_to_home():
-    """redirects to new home page"""
+    flash("That page has been moved")
     return redirect("/")
+
+
+MOVIES  = {"Shining", "Good Will Hunting", "Iron Man"}
+
+@app.route("/movies")
+def show_alL_movies():
+    """Show list of all movies in fake DB"""
+    return render_template("movies.html", movies = MOVIES)
+
+
+@app.route("/movies/json_demo")
+def get_movies_json():
+   """It's best to send a header"""
+
+   return jsonify(list(MOVIES))
+
+
+
+
+@app.route("/movies/new", methods = ["POST"])
+def add_movie():
+    title = request.form["title"]
+
+    #add to pretend databse
+    if title in MOVIES:
+        flash("Movie already exists", "error")
+    else:
+        MOVIES.add(title)
+        flash("Created movie", "success")
+
+    import pdb
+    pdb.set_trace()
+    return redirect("/movies")
 
 @app.route("/lucky")
 def lucky_number():
