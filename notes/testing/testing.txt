@@ -1,0 +1,12 @@
+!! Testing !!
+    x Unit Test
+    - one small piece of app at a time
+    - if we were testing something we would test individual components
+    
+    x Integration Test
+    - how two or more components are working together
+    - do the parts work together?
+
+    x End to end testing
+    - test the entire process from start to finish
+    

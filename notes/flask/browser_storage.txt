@@ -1,0 +1,23 @@
+!! Types of Browser Storage !!
+    x Local Storage 5MB/10MB
+    - stored on browser only changeable through js
+    - no expiration date - clear through browser cache or JS
+    - domain specific
+    - storage limit is much larger than a cookie
+    - common if you dont need it on server side
+    - client side reading only
+
+    x Session storage 5MB
+    - Session based
+    - different than Flask Session
+    - only lasts while that browser tab is open
+    - larger than cookie
+    - client side reading only
+
+    x Cookie 4KB
+    - cookies are smaller
+    - storage limit
+    - server and client side reading
+    - they are sent to servers unlike local storage or session storage
+    - cookies can be made secure with HTTPOnly
+

@@ -1,0 +1,22 @@
+!! We want to separate web interface from logic !!
+
+    - def calculate_taxes(income):
+        """ Calculate taxes for this income"
+
+    @app.route('/taxes', methods = ['POST'])
+    def taxes():
+    """Calculate taxes from the web form"
+
+    income = request.form.get('income')
+    owed = calculate_taxes(income)
+
+    x we want to separate the logic so we can test it then just implement the function into the form
+    - isolate the functionality in its own function
+    - anything that can stand on its own as a function should be its own function
+    - also might be able to reuse functions
+
+    ! Is there too much logic in your biew function?
+    ! don't need to just have one assertion in test logic
+    ! remember to test failing things, like forms that dont vaildate
+
+    x Break up your methods, if functions require multiple pieces of functionality

@@ -1,0 +1,24 @@
+
+% HTTP stateless
+
+    - it doesn't remember anything
+    - has no ties to previous requests
+    
+    x Local storage only accesible on client side
+        - can use for smaller apps
+        - doesn't send data to 
+
+    ! using cookies and sessions
+
+    !! Cookies !!
+    - most info stored through cookies
+    - a way of making http stateful
+    - store small bits of info on client (browser)
+
+    - FLask's session is powered by cookies
+    
+    x A Cookie is a key-value pair store by the client (browser)
+    - the server tells client to store these
+    - cookie info is sent via request header
+
+    

@@ -1,0 +1,8 @@
+! Testing flask apps
+    - way of seeing things are working together
+    - does this route return the right HTML
+    - does this route return the right status code
+    - y0ou wrie them with the unittest framweork
+
+    x test_client()
+    

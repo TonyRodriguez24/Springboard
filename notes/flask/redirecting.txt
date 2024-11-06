@@ -1,7 +1,7 @@
-redirecting
+! redirecting
 
-redirecting a user to a different end point depending on certain circumstances
-HTTP redirecting
-the status code is a redirect code 302
-it contains a url for browser to re-request
+x redirecting a user to a different end point depending on certain circumstances
+        - HTTP redirecting
+        - 1the status code is a redirect code 302
+        - it contains a url for browser to re-request
 

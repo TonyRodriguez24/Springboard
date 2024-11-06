@@ -1,0 +1,14 @@
+!! For small projects !!
+
+ - keep tests in one file tests.py
+
+ x For larger projects
+ - organize in files named
+
+ tests_cats
+ tests_dogs
+
+ python -m unittest will run both of these ^ if it makes sense
+
+ - you can run individual files / cases / test methods
+ 

@@ -1,0 +1,8 @@
+!! Unit test !!
+
+    - separate code from test logic
+
+    x test methods must start with test_
+    - must
+
+    -m unittest name_of_file

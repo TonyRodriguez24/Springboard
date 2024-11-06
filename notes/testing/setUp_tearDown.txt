@@ -1,0 +1,17 @@
+!! Set up !!
+    
+
+? class FlaskTests(TestCase)    
+x   def setUp(self):
+    """Stuff to do before we run every test"""
+
+x   def tearDown(self):
+    """Stuff to do before we run every test"""
+
+    
+    Runs in order:
+    setUp, test_1, tearDown
+    setUp, test_2, tearDown
+
+    - typically in set up we put things tests have in common
+    - ex removing a user to database only added for testing

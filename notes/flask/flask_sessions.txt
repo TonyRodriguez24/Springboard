@@ -1,0 +1,17 @@
+!! Flask Sessions !!
+    - a way of storing info in browser
+    - easier for devs
+    - fixes some issues with cookies
+
+    x Cookies can be tricky
+    - they are just strings
+    - limited by size - 4KB
+    - kind of low level
+
+    x Sessions
+    - magic dictionary built on top of cookies
+    - more secure in a way
+    - contain information for the current browser
+    - Preserve type (lists, dictionaries)
+    ! sessions are signed so users can't modify data
+    
