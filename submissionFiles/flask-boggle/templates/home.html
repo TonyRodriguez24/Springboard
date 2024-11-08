@@ -1,0 +1,27 @@
+{% extends 'base.html'%} {%block content%}
+<table>
+  {%for row in board%}
+  <tr>
+    {%for letter in row%}
+    <td>{{letter}}</td>
+    {%endfor%}
+  </tr>
+  {%endfor%}
+</table>
+
+<form id="guess-form">
+  <input
+    type="text"
+    id="guess"
+    name="guess"
+    placeholder="Enter your guess here"
+    autocomplete="off" />
+  <button id = 'guess-button'>Submit</button>
+  <p id="response-message"></p>
+  <p id="score">Score: {{score}}</p>
+  <p>Time Remaining: <span id = 'timer'>60</span> seconds</p>
+</form>
+<form action="{{ url_for('reset_game') }}" method="GET">
+  <button type="submit" id = 'reset-button'>Reset Game</button>
+</form>
+{%endblock%}
