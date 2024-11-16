@@ -1,0 +1,26 @@
+! Relational Databases
+    - PostGres is a relational
+    - Stores the data in tables
+    - Model data as rows and columns
+
+Non SQL Databases
+    - key value data Stores
+    - graph Databases
+    - column Databases
+    - different category of databases, give you more flexibility if you need. Sometimes comes at cost of scalability and efficiency
+    - MongoDB is a nonSQL
+
+x RDBMS
+    - software ran that communicates our queries
+      Relational Database Management System
+    - schema - a logical representation of a database including its tables
+    - SQL - structured query language, a human readable language for querying
+    x table
+        - column - a  table attribute (genre, year)
+        - row - a table record with values for those attributes
+
+Visualizing Relational Databases
+    - Have to design schema before we can add the data
+    
+
+

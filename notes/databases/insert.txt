@@ -1,0 +1,10 @@
+x INSERT INTO
+    table (title, author)
+x VALUES
+    ('Tony's book', 'Tony')
+
+x UPDATE 
+table 
+x SET
+
+x 

@@ -1,0 +1,13 @@
+- \l
+    lists all databases avaiable
+- \dt
+    shows info about table
+- psql DATABASE_NAME
+    jumps into database
+
+- dropdb DATABASE_NAME
+- pg_dump -C -c -O movies_example > pg_dump
+    this creates a backup if you wanted to drop the database
+
+- psql < filename.sql
+    fills db with sample data

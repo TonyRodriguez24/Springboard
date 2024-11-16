@@ -1,0 +1,4 @@
+Data ManipulatioN Language - DDL
+- subset of sql that involves querying and manipulating records in existing tabels
+- most of the DML you'll be doing will be related to CRUD operations on rows
+

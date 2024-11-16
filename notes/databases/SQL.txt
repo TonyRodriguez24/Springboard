@@ -1,0 +1,27 @@
+SQL
+- Strucuted Query Language
+- human readable language for relational dbs
+Strings in SQL
+- case sensitive
+- single quotes not double quotes
+- commands end in semi colons
+
+x SELECT * FROM  movies;
+
+- separate individual queries with semi colons
+
+- SQL words conventionally written ALL IN CAPS
+
+! CRUD
+    - C - Create
+    x INSERT INTO
+        creating something in db
+    - R - Read
+    x SELECT ... FROM 
+        finding from db
+    - U - Update
+    x UPDATE ... SET
+        updating something in db
+    - D - Delete
+    x DELETE FROM
+        deleting something from db

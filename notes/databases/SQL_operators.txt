@@ -1,0 +1,11 @@
+x - IN
+x - NOT IN 
+x - BETWEEN
+x - AND
+x - OR
+x - NOT
+x - LIKE
+    - trying to match text but don't know exact
+    - case sensitive
+    x ILIKE
+    - not case sensitive

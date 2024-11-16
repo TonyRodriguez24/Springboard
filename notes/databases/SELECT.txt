@@ -1,0 +1,29 @@
+x SELECT
+
+x FROM (1)
+    select and join info from table
+
+x WHERE (2)
+    - SELECT 
+        *
+    - FROM 
+        books
+    - WHERE 
+        price > 10;
+
+x GROUP BY (3) and HAVING
+    - group results into different groups
+    - SELECT, COUNT(*)
+        author
+    - FROM 
+        books
+    - GROUP BY 
+        publisher
+    - HAVING COUNT(*)
+        >= 2;
+
+
+x OFFSET and LIMIT
+    - bit easier
+    - OFFSET used in combination with limit to paginate results
+
