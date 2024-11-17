@@ -1,0 +1,28 @@
+x JOIN
+    - create a table in memory by combining info from different tables
+    - Most commonly join with comparing a foreign key and a primary key
+
+
+    % SELECT
+    title, name   
+
+    % FROM
+    movies
+
+    % JOIN
+    studios
+
+    % ON
+    movies.studio_id = studios.id;
+
+    JOIN and INNER JOIN are the same, the inner keyword is optional
+
+    x JOIN
+    - (inner) take overlap between two tables
+
+    x OUTER JOIN
+    - Left
+    - Right
+    - Full
+
+    - data that doesnt overlap
