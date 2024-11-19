@@ -1,0 +1,5 @@
+NORMALIZATION
+    - organizes tables in a manner that reduces redundancy and dependency of data
+    - divides larger tables to smaller tables and links them using relationships
+
+    
