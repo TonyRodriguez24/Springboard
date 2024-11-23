@@ -14,6 +14,14 @@ def connect_db(app):
 class Pet(db.Model):
     """Pet"""
 
+    #helps show us information about an instance of a class
+    def __repr__(self):
+        """Show information about the pet"""
+
+        p = self
+        return f"<Pet id = {p.id}, name = {p.name}, species = {p.species}, hunger = {p.hunger}>"
+
+
     __tablename__ = 'pets'
 
     id = db.Column( db.Integer,
@@ -34,4 +42,13 @@ class Pet(db.Model):
                        nullable=False,
                        default = 20)
     
+    def greet(self):
+        return f"Hi, I am {self.name} the {self.species}"
+    
+    def feed(self, amount = 20):
+        """Update hunger based off of amount"""
+        self.hunger -= amount
+        self.hunger = max(self.hunger, 0)
+
+
     #if you change table for now just drop table in postgres shell

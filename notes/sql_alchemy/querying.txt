@@ -1,0 +1,37 @@
+!! How to Query !!
+
+    x GETS ALL
+    - Pet.query.all()
+
+    x GETS BY ID
+    - Pet.query.get(1)
+    SELECT * FROM pets WHERE id = 1;
+    
+    x FILTER BY
+    - Pet.query.filter_by(species = "cat").all()   -    can also be .first() gives you first instance
+    pass in keyword arguments where species = "cat" or name = "Blue" or hunger = 20
+    can add in multiple arguments, seperate with a comma and it is read as AND.
+    have to add on the .all() or .first() for it to send
+
+
+    x FILTER - use double equals, more complex selections
+    - Pet.query.filter(Pet.hunger == 20).all()
+    - Pet.query.filter(Pet.species == 'dog').all()
+    have to explicitly reference Pet.species
+
+    x AND - you seperate by comma
+
+    x .get(primary_key)
+
+    x .all()
+    gets all matching records as a list
+
+    x .first()
+    gets first record or None
+
+    x .one() - you want exactly one
+    gets first record or error if there is 0 or more than 1
+    there should only be one thing matching the query, error otherwise
+
+    x one_or_none()
+    gets first matching record, error if > 1, None if 0
