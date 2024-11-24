@@ -14,6 +14,14 @@ def connect_db(app):
 class Pet(db.Model):
     """Pet"""
 
+    @classmethod
+    def get_by_species(cls, species):
+        return cls.query.filter_by(species = species).all()
+    
+    @classmethod
+    def get_all_hungry(cls):
+        return cls.query.filter(Pet.hunger > 20).all()
+
     #helps show us information about an instance of a class
     def __repr__(self):
         """Show information about the pet"""
