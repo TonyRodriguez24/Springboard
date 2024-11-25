@@ -28,7 +28,7 @@ class User(db.Model):
                           nullable = False
     )
 
-    image_url = db.Column(db.String(40),
+    image_url = db.Column(db.String(400),
                           nullable = False,
                           unique = True)
 
