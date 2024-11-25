@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Full list of Users</h1>
+<ul>
+{% for user in users%}
+<li>{{user.toString()}}</li>
+{% endfor%}
+</ul>
+<button type = "submit">Add new user</button>
+{% endblock %}
