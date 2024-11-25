@@ -1,0 +1,59 @@
+x Filter By
+Employee.query.filter_by(name = 'Liz').all()
+
+x Filter
+Employee.query.filter(Employee.name == 'Liz').all()
+
+new_hires = Employee.query.filter(Employee.id >= 4)
+x                  Chaining on queries
+ca_new_hires = new_hires.filter(Employee.state == 'CA')
+
+new_hires.all()
+x prints new hires
+
+ca_new_hires.all()
+
+
+!! this returns a list of tuples not just a list
+% db.session.query(Employeed.id, Employee.name).all()
+[(1, 'River Bottom'), (2, 'summer'), (3, 'Tony Rodriguez')]
+- useful when you dont need all fields
+- dont have object to update
+- can't use methods with this
+
+- .all()
+
+- .first()
+
+- .one()
+    error if 0 or more than 1
+
+- .one_or_none()
+    can be 0 or 1 but error if greater than 1
+
+- .count()
+    get number of records quickly, dont need info in query
+
+- .get(primary_key) 
+
+- .get_or_404
+    flask sql alchemy specific
+
+! Common Operators
+
+x in SQL
+in SQL SELECT * FROM employees WHERE state IN ('CA', 'OR', 'WA');
+
+x in SQL alchemy
+Employee.query.first(Employee.name == 'Jane')
+Employee.query.first(Employee.name != 'Jane')
+Employee.query.filter(Employee.id > 65)
+
+x Like and ilike
+Employee.query.filter(Employee.name.like('%Jane%'))
+
+x IN
+Employee.query.filter(Employee.state.in_(['NY', 'CA']))
+
+x OR
+separate by |
