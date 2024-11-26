@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>Edit a post</h2>
+<form action = "" method = "post">
+    <label for="title">Title</label>
+    <input type = "text" value = "{{post.title}}" name = "title" id = "title">
+
+    <label for="name">Content</label>
+    <textarea type = "text" name = "content" id = "content">{{post.content}}</textarea>
+    
+    <button>Cancel</button>
+    <button type="submit">Save</button>
+</form>
+{% endblock%}

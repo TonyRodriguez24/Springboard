@@ -1,0 +1,22 @@
+{% extends 'base.html'%}
+
+{% block content %}
+
+<h3>{{post.title}}</h3>
+<p>{{post.content}}</p>
+<p>By {{post.user.toString()}}</p>
+
+
+<form action = ''>
+<button>Cancel</button>
+</form>
+
+<form action = ''>
+<button>Edit</button>
+</form>
+
+<form action = '' method = "post">
+<button>Delete</button>
+</form>
+
+{% endblock%}

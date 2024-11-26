@@ -8,7 +8,7 @@ def connect_db(app):
 
 
 
-"""Models for Blogly."""
+"""User Model """
 class User(db.Model):
     __tablename__ = "users"
 
@@ -31,4 +31,22 @@ class User(db.Model):
     image_url = db.Column(db.String(600),
                           nullable = False,
                           unique = True)
+    
 
+
+class Post(db.Model):
+    __tablename__ = 'posts'
+
+    id = db.Column(db.Integer, autoincrement = True, primary_key = True)
+
+    title = db.Column(db.String(50), nullable = False, unique = True)
+
+    content = db.Column(db.String(2000), nullable = False)
+
+    created_at = db.Column(db.DateTime, nullable = False, default = db.func.now())
+
+    user_id = db.Column(db.Integer, db.ForeignKey('users.id')) # use table name for referencing key
+
+
+    #create relationship
+    user = db.relationship('User', backref = 'posts')
