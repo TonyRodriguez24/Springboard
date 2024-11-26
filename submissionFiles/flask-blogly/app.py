@@ -108,8 +108,3 @@ def edit_post(post_id):
 
     db.session.commit()
     return redirect(f"posts/{post_id}")
-
-
-@app.route('/posts/<int:post_id>/delete', methods = ['POST'])
-
-
