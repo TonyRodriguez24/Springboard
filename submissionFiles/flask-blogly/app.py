@@ -107,4 +107,4 @@ def edit_post(post_id):
     post.content = request.form.get('content')
 
     db.session.commit()
-    return redirect(f"posts/{post_id}")
+    return redirect(f"/posts/{post_id}")

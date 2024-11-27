@@ -9,7 +9,7 @@
 <h3>Posts</h3>
 <ul>
 {% for post in user.posts%}
-<li>{{post.title}}</li>
+<a href = '/posts/{{post.id}}'><li>{{post.title}}</li></a>
 {% endfor%}
 </ul>
 
