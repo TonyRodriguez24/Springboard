@@ -1,0 +1,23 @@
+{% extends 'base.jinja2' %} {% block content %}
+<h3 class>Users</h3>
+<ul>
+  {% for user in users%}
+  <a href = "/users/{{user.id}}"><li>{{user.toString()}}</li></a>
+  {% endfor%}
+</ul>
+
+<h3>Posts</h3>
+<ul>
+  {% for post in posts%}
+  <a href = "/posts/{{post.id}}"><li>{{post.title}}</li></a>
+  {% endfor%}
+</ul>
+
+<h3>Tags</h3>
+<ul>
+  {% for tag in tags%}
+  <a href = "/tags/{{tag.id}}"><li>{{tag.name}}</li></a>
+  {% endfor%}
+</ul>
+
+{% endblock %}

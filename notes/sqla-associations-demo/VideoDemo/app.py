@@ -5,7 +5,6 @@ app = Flask(__name__)
 
 app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql:///employees_db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-app.config['SQLALCHEMY_ECHO'] = True
 app.config['SECRET_KEY'] = "chickenzarecool21837"
 
 connect_db(app)
@@ -16,3 +15,6 @@ def list_phones():
     """Renders directory of employees and phone numbers  (from dept)"""
     emps = Employee.query.all()
     return render_template('phones.html', emps=emps)
+
+
+

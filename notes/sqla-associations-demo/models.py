@@ -49,6 +49,11 @@ class Employee(db.Model):
     def __repr__(self):
         return f"<Employee {self.name} {self.state} {self.dept_code}"
     
+
+
+
+
+#this uses the relationship, this is inefficient. Making joins are better    
 def get_directory():
     employees = Employee.query.all()
 
@@ -58,5 +63,31 @@ def get_directory():
         else:
             print(employee.name)
 
+#joining
+def get_directory_join():
+    """Show employees with a join"""
+    directory = db.session.query(Employee.name, Department.dept_name, Department.phone).join(Department).all()
 
+    #unpacking a tuple
+    for name, dept, phone in directory:
+        print(name, dept, phone)
 
+def get_directory_join2():
+    """Show employees with a join"""
+    directory = db.session.query(Employee, Department).join(Department).all()
+
+    #unpacking a tuple
+    for emp, dept in directory:
+        print(emp.name, dept.dept_name, dept.phone)
+
+def get_directory_all_join():
+    """Show employees with a join"""
+    directory = db.session.query(Employee.name, Department.dept_name, Department.phone).outerjoin(Department).all()
+
+    #unpacking a tuple
+    for name, dept, phone in directory:
+        print(name, dept, phone)
+
+#many to many using sql alchemy
+#movies, actors, roles(movies_actors
+#employees, projects, employees_projects

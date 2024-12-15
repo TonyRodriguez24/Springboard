@@ -1,0 +1,15 @@
+{% extends 'base.jinja2'%}
+
+{% block content%}
+
+<h3>Tags</h3>
+
+<ul>
+{%for tag in tags%}
+<a href = '/tags/{{tag.id}}'><li>{{tag.name}}</li></a>
+{%endfor%}
+</ul>
+
+<a href = '/tags/new'>Create tag</a>
+
+{%endblock%}

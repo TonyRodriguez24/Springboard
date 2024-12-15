@@ -1,5 +1,5 @@
 from flask import Flask, render_template
-from models import Employee, Department, db, connect_db, get_directory
+from models import Employee, Department, db, connect_db, get_directory_join2
 
 app = Flask(__name__)
 

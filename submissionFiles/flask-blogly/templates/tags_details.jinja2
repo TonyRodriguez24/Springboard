@@ -1,0 +1,14 @@
+{% extends 'base.jinja2'%}
+
+{% block content %}
+<h2>
+Tag Details
+</h2>
+
+<h4>Tag name: {{tag.name}}</h4>
+<h4>Tag id: {{tag.id}}</h4>
+
+<form action = '/tags/{{tag.id}}/edit'>
+<button>Edit</button>
+</form>
+{% endblock%}
