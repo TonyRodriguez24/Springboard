@@ -1,0 +1,50 @@
+{% extends 'base.jinja' %}
+
+{% block title %}
+    Edit Pet Form
+{% endblock %}
+
+{% block content %}
+    <h2 class = 'mx-2'>Add Pet</h2>
+
+
+    <form class = 'mx-2' method="POST">
+        {# {{ form.hidden_tag()  }}
+    
+    <div>
+        {{form.name.label}}
+        {{form.name}}
+
+        {% for error in form.name.errors%}
+        {{error}}
+        {% endfor%}
+    </div>
+
+ <div>
+        {{form.species.label}}
+        {{form.species}}
+
+        {% for error in form.species.errors%}
+        {{error}}
+        {% endfor%}
+    </div>
+
+    manual approach #}
+
+        {{ form.hidden_tag() }}
+
+        {% for field in form %}
+            {% if field.type != 'CSRFTokenField' %}
+                <div>
+                    {{ field.label }}
+                    {{ field(class_ = 'form-control') }}
+
+                    {% for error in field.errors %}
+                        {{ error }}
+                    {% endfor %}
+                </div>
+            {% endif %}
+        {% endfor %}
+        <button class = 'btn btn-success'>Save Changes</button>
+    </form>
+{% endblock %}

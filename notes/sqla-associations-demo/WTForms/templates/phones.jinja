@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <link rel = 'stylesheet' href = 'https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css'>
+
+</head>
+<body>
+<div class="container">
+
+<h1>Phones</h1>
+<li><a href="/phones">Lazy Version</a></li>
+<li><a href="/phones-eager">Eager Version</a></li>
+
+<div class = "container">
+<h1>Phone Numbers</h1>
+<table class="table table-striped mt-5">
+  <thead class="table-dark">
+    <tr>
+      <th>Employee</th>
+      <th>Department</th>
+      <th>Phone</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    {% for employee in employees %}
+      <tr>
+        <td>{{ employee.name.capitalize() }}  <a class = 'btn btn-sm btn-success' href = '/employees/{{employee.id}}/edit'>Edit</a> </td>
+
+        <!-- Display Department Name if Available -->
+        {% if employee.dept and employee.dept.dept_name %}
+          <td>{{ employee.dept.dept_name.capitalize() }} </td>
+        {% else %}
+          <td class="text-danger">No Department</td>
+        {% endif %}
+
+        <!-- Display Phone Number -->
+        {% if employee.dept and employee.dept.phone %}
+          <td>{{ employee.dept.phone }}</td>
+        {% else %}
+          <td class="text-danger">NO PHONE</td>
+        {% endif %}
+      </tr>
+    {% endfor %}
+  </tbody>
+</table>
+<a href = '/employees/new' class = 'btn btn-primary'>Add employee</a>
+
+</div>
+</body>
+</html>

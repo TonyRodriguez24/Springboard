@@ -1,0 +1,22 @@
+{% extends 'base.jinja' %}
+{% block title %}Welcome to the home page{% endblock %}
+{% block content %}
+    <h1 class="h1 m-2">Welcome to the home page</h1>
+    <ul>
+        {% for pet in pets %}
+            <li>
+                Hi, I'm {{ pet.name.capitalize() }} and I am
+                {{ "available" if pet.available else "not available" }}
+            </li>
+            <img class="img-fluid img-thumbnail" src="{{ pet.photo_url }}" />
+            <li class="list-unstyled mb-4">
+                <a href="/pets/{{ pet.id }}" class="btn btn-success mt-1"
+                    >More information</a
+                >
+            </li>
+        {% endfor %}
+
+        <p>If you want to add a pet?
+        <a href="/add" class="btn btn-primary">Click here</a></p>
+    </ul>
+{% endblock %}

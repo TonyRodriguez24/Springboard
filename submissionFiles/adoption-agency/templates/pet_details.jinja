@@ -1,0 +1,10 @@
+{% extends 'base.jinja' %}
+{% block content %}
+    <div class="container">
+        <h1 class="display-1">Hi, my name is {{ pet.name.capitalize() }}</h1>
+        <h4>I am {{ "Available" if pet.available else "Not Available" }}</h4>
+        <img src="{{ pet.photo_url }}" />
+        <p>I am a {{ pet.species }} and I am {{ pet.age }} years old</p>
+        <a href="/pets/{{ pet.id }}/edit" class="btn btn-success">Edit</a>
+    </div>
+{% endblock %}
