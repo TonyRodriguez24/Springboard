@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Address Form</title>
+    </head>
+    <body>
+        <h2>Enter your address</h2>
+        {% if coordinates%}
+        <h3>{{coordinates['lat']}}</h3>
+        <h3>{{coordinates['lng']}}</h3>
+        {%endif%}
+        <form action="/geocode">
+            <input type="text" name="address" placeholder="Enter address" />
+            <button>Go</button>
+        </form>
+    </body>
+</html>

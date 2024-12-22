@@ -1,0 +1,29 @@
+x safety
+safe operation is one that does not change the data requested
+
+x indempotent
+an indempotent operation can be performed many times with the result of all calls being the same as if it was done once
+- refers to side effects
+
+get
+post
+put/patch
+delete
+
+- better describes the routes that we create
+- build standards around how we define routes
+
+!! Core part of the REST standard 
+
+! Introduction to REST
+
+x Architectural style defining constraints for creating web services
+- pattern for creating web services
+- client-server model, statelessness, cacheability
+
+-RESTful APIs
+    - usually have base url
+    - resource after that base URL
+    - use standard HTTP verbs (GET, POST, PUT/PATCH, DELETE)
+
+    

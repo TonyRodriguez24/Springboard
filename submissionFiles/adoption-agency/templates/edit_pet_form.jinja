@@ -5,10 +5,9 @@
 {% endblock %}
 
 {% block content %}
-    <h2 class = 'mx-2'>Add Pet</h2>
+    <h2 class="mx-2">Add Pet</h2>
 
-
-    <form class = 'mx-2' method="POST">
+    <form class="mx-2" method="POST">
         {# {{ form.hidden_tag()  }}
     
     <div>
@@ -38,13 +37,12 @@
                 <div>
                     {{ field.label }}
                     {{ field(class_ = 'form-control') }}
-
                     {% for error in field.errors %}
                         {{ error }}
                     {% endfor %}
                 </div>
             {% endif %}
         {% endfor %}
-        <button class = 'btn btn-success'>Save Changes</button>
+        <button class="btn btn-success">Save Changes</button>
     </form>
 {% endblock %}

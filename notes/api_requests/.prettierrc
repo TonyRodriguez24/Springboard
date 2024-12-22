@@ -1,0 +1,14 @@
+{
+    "semi": true,
+    "singleQuote": true,
+    "tabWidth": 4,
+    "plugins": ["prettier-plugin-jinja-template"],
+    "overrides": [
+        {
+            "files": ["*.jinja", "*.jinja2"],
+            "options": {
+                "parser": "jinja-template"
+            }
+        }
+    ]
+}
