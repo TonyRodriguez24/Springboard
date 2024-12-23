@@ -6,8 +6,14 @@
     <title>Document</title>
 </head>
 <body>
+<h3>Cupcakes</h3>
+<ul>
     {% for cupcake in cupcakes%}
-    {{cupcake.flavor}}
+    <li>Flavor: {{cupcake.flavor}}</li>
+    <li>Rating: {{cupcake.rating}}</li>
+    <li>Id: {{cupcake.id}}</li>
+    <img src = '{{cupcake.image}}'>
     {%endfor%}
+    </ul>
 </body>
 </html>

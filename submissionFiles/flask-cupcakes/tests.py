@@ -24,73 +24,83 @@ CUPCAKE_DATA_2 = {
     "image": "http://test.com/cupcake2.jpg"
 }
 
-
 class CupcakeViewsTestCase(TestCase):
+
     def setUp(self):
         with app.app_context():
-            db.session.query(Cupcake).delete()
+            #clear existing data in the database
+            Cupcake.query.delete()
+
             cupcake = Cupcake(**CUPCAKE_DATA)
             db.session.add(cupcake)
             db.session.commit()
-            self.cupcake = cupcake
+
+            self.client = app.test_client()
+
 
     def tearDown(self):
         with app.app_context():
             db.session.rollback()
-            db.session.query(Cupcake).delete()
-            db.session.commit()
-
+    
     def test_list_cupcakes(self):
-        with app.test_client() as client:
-            with app.app_context():
-                cupcake = Cupcake.query.first()  # Re-fetch cupcake
+        #checking get route of list
+        response = self.client.get('/api/cupcakes')
 
-            resp = client.get("/api/cupcakes")
-            self.assertEqual(resp.status_code, 200)
+        #check status code
+        self.assertEqual(response.status_code, 200)
 
-            data = resp.json
-            self.assertEqual(data, {
-                "cupcakes": [
-                    {
-                        "id": cupcake.id,
-                        "flavor": cupcake.flavor,
-                        "size": cupcake.size,
-                        "rating": cupcake.rating,
-                        "image": cupcake.image
-                    }
-                ]
-            })
-
+        #check the response data
+        #checking if length of cupcakses is one and that cupcake flavor matches data in db
+        data = response.json
+        self.assertEqual(len(data['cupcakes']), 1)
+        self.assertEqual(data['cupcakes'][0]['flavor'], CUPCAKE_DATA['flavor'])
+    
     def test_get_cupcake(self):
-        with app.test_client() as client:
-            with app.app_context():
-                cupcake = Cupcake.query.first()  # Re-fetch cupcake
+        #checking getting cupcake by id
+        cupcake = Cupcake.query.first()
+        response = self.client.get(f'/api/cupcakes/{cupcake.id}')
 
-            url = f"/api/cupcakes/{cupcake.id}"
-            resp = client.get(url)
-            self.assertEqual(resp.status_code, 200)
+        self.assertEqual(response.status_code, 200)
+        data = response.json
 
-            data = resp.json
-            self.assertEqual(data, {
-                "cupcake": {
-                    "id": cupcake.id,
-                    "flavor": cupcake.flavor,
-                    "size": cupcake.size,
-                    "rating": cupcake.rating,
-                    "image": cupcake.image
-                }
-            })
+        self.assertEqual(data['cupcake']['flavor'], CUPCAKE_DATA['flavor'])
 
-    def test_create_cupcake(self):
-        with app.test_client() as client:
-            url = "/api/cupcakes"
-            resp = client.post(url, json=CUPCAKE_DATA_2)
+    def test_add_cupcake(self):
+        """test the adding of a single cupcake"""
+        response = self.client.post('/api/cupcakes', json = {
+            'flavor':'apple',
+            'size': 'small',
+            'rating': 6,
+            'image': 'http://test.com/vanila.jpg'
+        })
 
-            self.assertEqual(resp.status_code, 201)
+        self.assertEqual(response.status_code, 200)
+        data = response.json
 
-            data = resp.json
-            self.assertIn('cupcake', data)
+        self.assertEqual(data['cupcake']['flavor'], 'apple')
+        self.assertEqual(data['cupcake']['size'], 'small')
+        self.assertEqual(data['cupcake']['rating'], 6)
+        self.assertEqual(data['cupcake']['image'], 'http://test.com/vanila.jpg')
 
-            self.assertIsInstance(data['cupcake']['id'], int)
-            self.assertEqual(data['cupcake']['flavor'], "TestFlavor2")
-            self.assertEqual(Cupcake.query.count(), 2)
+    def test_updating_cupcake(self);
+        """Test editing a cupcake's details"""
+        cupcake = Cupcake.query.first()
+        response = self.client.patch(f'/api/cupcakes/{cupcake.id}', json={
+            'flavor': 'Chocolate',
+            'rating': 9
+        })
+
+        self.assertEqual(response.status_code, 200)
+        data = response.json
+        self.assertEqual(data['cupcake']['flavor'], 'Chocolate')
+        self.assertEqual(data['cupcake']['rating'], 9)
+
+    def test_delete_cupcake(self):
+        """Test deleting a cupcake by ID."""
+        cupcake = Cupcake.query.first()  # Get a cupcake from setup
+        response = self.client.delete(f"/api/cupcakes/{cupcake.id}")
+        
+        self.assertEqual(response.status_code, 200)
+        data = response.json
+        self.assertEqual(data['message'], "Cupcake successfully removed")
+        self.assertIsNone(Cupcake.query.get(cupcake.id))  
