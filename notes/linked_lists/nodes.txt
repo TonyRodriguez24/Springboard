@@ -1,0 +1,8 @@
+- A basic Node has two attributes
+
+x val 
+    - the information the node contains
+
+x next
+    - reference to the next node
+    for last item, this is null
