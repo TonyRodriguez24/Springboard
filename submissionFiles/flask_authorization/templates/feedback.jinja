@@ -1,0 +1,28 @@
+{% extends 'base.jinja' %}
+
+{% block content %}
+
+<h1 class = ' mx-2 display-5'>Feedback</h1>
+ {{ form.hidden_tag() }}
+
+    <div>
+        {{ form.title.label }}
+        {{ form.title(class_='form-control') }}
+    </div>
+
+    <div>
+        {{ form.content.label }}
+        {{ form.content(class_='form-control') }}
+    </div>
+
+    <!-- Manually set the value of the username field -->
+    <div>
+        {{ form.username.label }}
+        <input class="form-control" id="username" name="username" type="text" value="{{ user.username }}" readonly>
+    </div>
+<button type = 'submit' class = 'btn btn-success'>Submit</button>
+<a href = '/' class ='btn btn-secondary'>Cancel</a>
+</form>
+
+    
+{% endblock content %}

@@ -1,0 +1,28 @@
+{% extends 'base.jinja' %}
+
+{% block content %}
+
+<h1 class = ' mx-2 display-5'>Register</h1>
+<form action = '/register' class = 'm-3' method = 'post'>
+{{ form.hidden_tag() }}
+{% for field in form if field.widget.input_type != 'hidden'%}
+
+<p>
+{{field.label}}
+{{field(class_='form-control')}}
+{%if field.errors%}
+    <div class = 'text-danger'>
+        {%for error in field.errors%}
+         <small>{{error}}</small>
+        {%endfor%}
+    </div>
+{%endif%}
+
+</p>
+{%endfor%}
+<button type = 'submit' class = 'btn btn-success'>Submit</button>
+<a href = '/' class ='btn btn-secondary'>Cancel</a>
+</form>
+
+    
+{% endblock content %}

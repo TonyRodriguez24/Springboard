@@ -26,7 +26,7 @@ def show_tweets():
 
     if form.validate_on_submit():
         text = form.text.data
-        new_tweet = Tweet(text=text, user_id=session['user_id'])
+        new_tweet = Tweet(text=text, user_id=session['user_id']) # type: ignore
         db.session.add(new_tweet)
         db.session.commit()
         flash('Tweet created', 'success')
@@ -66,7 +66,7 @@ def register_user():
         try:
             db.session.commit()
         except IntegrityError:
-            form.username.errors.append('Username taken. Please chose another')
+            form.username.errors.append('Username taken. Please chose another') # type: ignore
             return render_template('register.jinja', form = form)
 
         session['user_id'] = new_user.id
@@ -93,6 +93,8 @@ def login_user():
             form.username.errors = ['Invalid username/password']
 
     return render_template('login.jinja', form = form)
+
+
 
 @app.route('/logout')
 def logout_user():

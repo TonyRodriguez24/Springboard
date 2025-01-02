@@ -1,0 +1,22 @@
+{% extends 'base.jinja' %}
+
+{% block content %}
+<h1 class = ' mx-2 display-5'>Login</h1>
+
+<form class = 'm-3' method = 'post'>
+{{form.hidden_tag()}}
+    {% for field in form if field.widget.input_type != 'hidden'%}
+
+    <p>
+    {{field.label}}
+    {{field(class_='form-control')}}
+    </p>
+
+    {%endfor%}
+
+    <button type = 'submit' class = 'btn btn-success'>Submit</button>
+    <a href = '/' class ='btn btn-secondary'>Cancel</a>
+</form>
+
+    
+{% endblock content %}
