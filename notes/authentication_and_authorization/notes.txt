@@ -1,0 +1,5 @@
+Hashing (hashing function)
+- takes an input and gives output of a fixed size
+
+Cryptographic hash function
+- makes password unrecognizable and can't figure out what the password is
