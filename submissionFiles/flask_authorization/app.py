@@ -61,8 +61,9 @@ def secret_route(username):
         return redirect('/')
     
     user = User.query.get(username)
+    feedback = Feedback.query.filter_by(username=username).all()
 
-    return render_template('secret.jinja', user = user)
+    return render_template('secret.jinja', user = user, feedback = feedback)
 
 @app.route('/users/<username>/delete', methods = ['POST'])
 def delete_user(username):
@@ -93,6 +94,8 @@ def add_feedback(username):
     
     form = FeedbackForm()
     user = User.query.get(username)
+    
+
 
     if form.validate_on_submit():
         title = form.title.data
