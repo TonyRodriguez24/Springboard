@@ -1,5 +1,5 @@
 """SQLAlchemy models for Warbler."""
-from datetime import datetime
+from datetime import datetime, timezone
 
 from flask_bcrypt import Bcrypt
 from flask_sqlalchemy import SQLAlchemy
@@ -10,109 +10,43 @@ db = SQLAlchemy()
 
 class Follows(db.Model):
     """Connection of a follower <-> followed_user."""
-
     __tablename__ = 'follows'
 
-    user_being_followed_id = db.Column(
-        db.Integer,
-        db.ForeignKey('users.id', ondelete="cascade"),
-        primary_key=True,
-    )
+    user_being_followed_id = db.Column( db.Integer, db.ForeignKey('users.id', ondelete="cascade"), primary_key=True)
+    user_following_id = db.Column(db.Integer, db.ForeignKey('users.id', ondelete="cascade"), primary_key=True)
 
-    user_following_id = db.Column(
-        db.Integer,
-        db.ForeignKey('users.id', ondelete="cascade"),
-        primary_key=True,
-    )
+    #this makes sense because they both reference the users table but referencing diff users
 
 
 class Likes(db.Model):
     """Mapping user likes to warbles."""
-
     __tablename__ = 'likes' 
 
-    id = db.Column(
-        db.Integer,
-        primary_key=True
-    )
-
-    user_id = db.Column(
-        db.Integer,
-        db.ForeignKey('users.id', ondelete='cascade')
-    )
-
-    message_id = db.Column(
-        db.Integer,
-        db.ForeignKey('messages.id', ondelete='cascade'),
-        unique=True
-    )
+    id = db.Column( db.Integer, primary_key=True, autoincrement=True)
+    user_id = db.Column(db.Integer, db.ForeignKey('users.id', ondelete='cascade'))
+    message_id = db.Column(db.Integer, db.ForeignKey('messages.id', ondelete='cascade'), unique=True)
 
 
 class User(db.Model):
     """User in the system."""
-
     __tablename__ = 'users'
 
-    id = db.Column(
-        db.Integer,
-        primary_key=True,
-    )
+    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+    email = db.Column(db.Text, nullable=False, unique=True )
+    username = db.Column(db.Text, nullable=False, unique=True)
+    password = db.Column(db.Text, nullable=False)
 
-    email = db.Column(
-        db.Text,
-        nullable=False,
-        unique=True,
-    )
 
-    username = db.Column(
-        db.Text,
-        nullable=False,
-        unique=True,
-    )
+    image_url = db.Column(db.Text, default="/static/images/default-pic.png")
+    header_image_url = db.Column(db.Text, default="/static/images/warbler-hero.jpg")
+    bio = db.Column(db.Text)
+    location = db.Column(db.Text, nullable = False)
 
-    image_url = db.Column(
-        db.Text,
-        default="/static/images/default-pic.png",
-    )
-
-    header_image_url = db.Column(
-        db.Text,
-        default="/static/images/warbler-hero.jpg"
-    )
-
-    bio = db.Column(
-        db.Text,
-    )
-
-    location = db.Column(
-        db.Text,
-    )
-
-    password = db.Column(
-        db.Text,
-        nullable=False,
-    )
-
-    messages = db.relationship('Message')
-
-    followers = db.relationship(
-        "User",
-        secondary="follows",
-        primaryjoin=(Follows.user_being_followed_id == id),
-        secondaryjoin=(Follows.user_following_id == id)
-    )
-
-    following = db.relationship(
-        "User",
-        secondary="follows",
-        primaryjoin=(Follows.user_following_id == id),
-        secondaryjoin=(Follows.user_being_followed_id == id)
-    )
-
-    likes = db.relationship(
-        'Message',
-        secondary="likes"
-    )
+    
+    messages = db.relationship('Message', backref = 'user', lazy = True)
+    followers = db.relationship("User", secondary="follows", primaryjoin=(Follows.user_being_followed_id == id), secondaryjoin=(Follows.user_following_id == id), overlaps = 'following')
+    following = db.relationship("User", secondary="follows", primaryjoin=(Follows.user_following_id == id), secondaryjoin=(Follows.user_being_followed_id == id), overlaps = 'followers')
+    likes = db.relationship('Message', secondary="likes")
 
     def __repr__(self):
         return f"<User #{self.id}: {self.username}, {self.email}>"
@@ -120,13 +54,13 @@ class User(db.Model):
     def is_followed_by(self, other_user):
         """Is this user followed by `other_user`?"""
 
-        found_user_list = [user for user in self.followers if user == other_user]
+        found_user_list = [user for user in self.followers if user == other_user] # type: ignore
         return len(found_user_list) == 1
 
     def is_following(self, other_user):
         """Is this user following `other_use`?"""
 
-        found_user_list = [user for user in self.following if user == other_user]
+        found_user_list = [user for user in self.following if user == other_user] # type: ignore
         return len(found_user_list) == 1
 
     @classmethod
@@ -171,32 +105,12 @@ class User(db.Model):
 
 class Message(db.Model):
     """An individual message ("warble")."""
-
     __tablename__ = 'messages'
 
-    id = db.Column(
-        db.Integer,
-        primary_key=True,
-    )
-
-    text = db.Column(
-        db.String(140),
-        nullable=False,
-    )
-
-    timestamp = db.Column(
-        db.DateTime,
-        nullable=False,
-        default=datetime.utcnow(),
-    )
-
-    user_id = db.Column(
-        db.Integer,
-        db.ForeignKey('users.id', ondelete='CASCADE'),
-        nullable=False,
-    )
-
-    user = db.relationship('User')
+    id = db.Column(db.Integer, primary_key=True)
+    text = db.Column(db.String(140), nullable=False)
+    timestamp = db.Column(db.DateTime,nullable=False, default=datetime.now(timezone.utc) )
+    user_id = db.Column(db.Integer, db.ForeignKey('users.id', ondelete='CASCADE'), nullable=False)
 
 
 def connect_db(app):

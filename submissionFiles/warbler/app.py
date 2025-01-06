@@ -1,6 +1,6 @@
 import os
 
-from flask import Flask, render_template, request, flash, redirect, session, g
+from flask import Flask, render_template, request, flash, redirect, session, g, url_for
 from flask_debugtoolbar import DebugToolbarExtension
 from sqlalchemy.exc import IntegrityError
 
@@ -18,7 +18,7 @@ app.config['SQLALCHEMY_DATABASE_URI'] = (
 
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['SQLALCHEMY_ECHO'] = False
-app.config['DEBUG_TB_INTERCEPT_REDIRECTS'] = True
+app.config['DEBUG_TB_INTERCEPT_REDIRECTS'] = False
 app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY', "it's a secret")
 toolbar = DebugToolbarExtension(app)
 
@@ -30,8 +30,8 @@ connect_db(app)
 
 
 @app.before_request
-def add_user_to_g():
-    """If we're logged in, add curr user to Flask global."""
+def load_logged_in_user():
+    """If we're logged in, add current user to Flask global."""
 
     if CURR_USER_KEY in session:
         g.user = User.query.get(session[CURR_USER_KEY])
@@ -112,8 +112,11 @@ def login():
 @app.route('/logout')
 def logout():
     """Handle logout of user."""
-
-    # IMPLEMENT THIS
+    if session.get(CURR_USER_KEY):
+        do_logout()
+        flash('User successfully logged out', 'success')
+    
+    return redirect(url_for('login'))
 
 
 ##############################################################################
@@ -139,7 +142,6 @@ def list_users():
 @app.route('/users/<int:user_id>')
 def users_show(user_id):
     """Show user profile."""
-
     user = User.query.get_or_404(user_id)
 
     # snagging messages in order from the database;
@@ -210,8 +212,11 @@ def stop_following(follow_id):
 @app.route('/users/profile', methods=["GET", "POST"])
 def profile():
     """Update profile for current user."""
+    #notes to self - g user gains global access to user logged in, this is defined in @app.before_request, which runs before every request made to app
+    if not g.user:
+        return redirect('/login')
 
-    # IMPLEMENT THIS
+    return render_template('users/edit.html', user = g.user)
 
 
 @app.route('/users/delete', methods=["POST"])
