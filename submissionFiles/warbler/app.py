@@ -4,7 +4,7 @@ from flask import Flask, render_template, request, flash, redirect, session, g, 
 from flask_debugtoolbar import DebugToolbarExtension
 from sqlalchemy.exc import IntegrityError
 
-from forms import UserAddForm, LoginForm, MessageForm
+from forms import UserAddForm, LoginForm, MessageForm, ProfileEditForm
 from models import db, connect_db, User, Message
 
 CURR_USER_KEY = "curr_user"
@@ -212,11 +212,31 @@ def stop_following(follow_id):
 @app.route('/users/profile', methods=["GET", "POST"])
 def profile():
     """Update profile for current user."""
-    #notes to self - g user gains global access to user logged in, this is defined in @app.before_request, which runs before every request made to app
+    #notes to self - g user gains access to user logged in, this is defined in @app.before_request, which runs before every request made to app
     if not g.user:
         return redirect('/login')
+    
+    user = User.query.get_or_404(g.user.id)
 
-    return render_template('users/edit.html', user = g.user)
+    form = ProfileEditForm(obj = user)
+
+    if form.validate_on_submit():
+        if not User.authenticate(user.username, form.password.data):
+            flash('Incorrect password please try again.', 'danger')
+            return redirect('/users/profile')
+
+        user.username = form.username.data
+        user.email = form.email.data
+        user.image_url = form.image_url.data
+        user.bio = form.bio.data
+        user.location = form.location.data
+
+        db.session.commit()
+        flash('User edited' , 'success')
+
+        return redirect(f'/users/{user.id}')
+
+    return render_template('users/edit.html', user = g.user, form = form)
 
 
 @app.route('/users/delete', methods=["POST"])
