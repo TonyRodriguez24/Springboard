@@ -317,11 +317,7 @@ def homepage():
     """
 
     if g.user:
-        messages = (Message
-                    .query
-                    .order_by(Message.timestamp.desc())
-                    .limit(100)
-                    .all())
+        messages = Message.get_logged_in_warbles(g.user)
 
         return render_template('home.html', messages=messages)
 

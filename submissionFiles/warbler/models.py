@@ -112,6 +112,21 @@ class Message(db.Model):
     timestamp = db.Column(db.DateTime,nullable=False, default=datetime.now(timezone.utc) )
     user_id = db.Column(db.Integer, db.ForeignKey('users.id', ondelete='CASCADE'), nullable=False)
 
+    @classmethod
+    def get_logged_in_warbles(cls, user):
+        #get the ids of the the users that the logged in user is following
+        ids = [u.id for u in user.following]
+
+        #add the users own id since we also want to see theirs show up
+        ids.append(user.id)
+
+        return (cls
+                .query
+                .filter(cls.user_id.in_(ids)) # only want messages from these users
+                .order_by(cls.timestamp.desc()) # newest ones are at the top
+                .limit(100)
+                .all())
+
 
 def connect_db(app):
     """Connect this database to provided Flask app.
