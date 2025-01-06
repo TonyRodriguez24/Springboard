@@ -5,7 +5,7 @@ from flask_debugtoolbar import DebugToolbarExtension
 from sqlalchemy.exc import IntegrityError
 
 from forms import UserAddForm, LoginForm, MessageForm, ProfileEditForm
-from models import db, connect_db, User, Message
+from models import db, connect_db, User, Message, Likes
 
 CURR_USER_KEY = "curr_user"
 
@@ -303,6 +303,33 @@ def messages_destroy(message_id):
 
     return redirect(f"/users/{g.user.id}")
 
+### Like routes
+    
+@app.route('/users/toggle_like/<int:message_id>', methods=['POST'])
+def toggle_like(message_id):
+    if not g.user:
+        flash('You must be signed into like or unlike a message' , 'danger')
+        return redirect('/login')
+    
+    message = Message.query.get(message_id)
+    if not message:
+        flash('The message you are looking for does not exist' , 'danger')
+        return redirect(request.referrer or '/')
+    
+    message_liked = Likes.query.filter_by(user_id = g.user.id, message_id = message_id).first()
+
+    if message_liked:
+        db.session.delete(message_liked)
+        db.session.commit()
+        flash('Like removed' , 'success')
+
+    else:
+        new_like = Likes(user_id = g.user.id, message_id =message_id)
+        db.session.add(new_like)
+        db.session.commit()
+        flash('Like added' , 'success')
+
+    return redirect(request.referrer or '/')
 
 ##############################################################################
 # Homepage and error pages
@@ -318,8 +345,8 @@ def homepage():
 
     if g.user:
         messages = Message.get_logged_in_warbles(g.user)
-
-        return render_template('home.html', messages=messages)
+        liked_message_ids = [like.message_id for like in Likes.query.filter_by(user_id=g.user.id).all()]
+        return render_template('home.html', messages=messages, liked_message_ids = liked_message_ids)
 
     else:
         return render_template('home-anon.html')
