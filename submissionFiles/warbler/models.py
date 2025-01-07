@@ -40,7 +40,7 @@ class User(db.Model):
     image_url = db.Column(db.Text, default="/static/images/default-pic.png")
     header_image_url = db.Column(db.Text, default="/static/images/warbler-hero.jpg")
     bio = db.Column(db.Text)
-    location = db.Column(db.Text, nullable = False)
+    location = db.Column(db.Text)
 
     
     messages = db.relationship('Message', backref = 'user', lazy = True)
@@ -72,7 +72,7 @@ class User(db.Model):
 
         hashed_pwd = bcrypt.generate_password_hash(password).decode('UTF-8')
 
-        user = User(
+        user = cls(
             username=username, # type: ignore
             email=email, # type: ignore
             password=hashed_pwd, # type: ignore
