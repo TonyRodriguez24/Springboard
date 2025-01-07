@@ -1,0 +1,31 @@
+x Maps
+    - abstract data type for mapping key value pairs
+    - dictionary in python
+
+Hash Maps
+- mostly constant time
+- choosing array size large enough to minimize collisions
+- even with that collisions will happen
+
+chaining
+- sharing one bucket
+
+open addressing
+- linear probing 
+
+both can get close to linear time in the worst case
+
+x Set is just a Map without Values
+
+JS
+- sets
+- objects
+- Maps
+
+
+python
+- dictionary
+- sets
+- frozen set
+
+all built on maps

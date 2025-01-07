@@ -1,0 +1,5 @@
+building blocks of react
+Pieces of UI and view logic
+- using functions
+    functions that know how to return HTML to render
+    
