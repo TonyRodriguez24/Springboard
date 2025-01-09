@@ -1,0 +1,26 @@
+x Looping
+    - using map the array method
+    - {props.items.map}
+
+!! React !!
+will see map method everywhere and ternary operators
+- map makes a new array, leaving original array unaffected
+often use the implicit return (
+
+) 
+
+instead of 
+
+{
+    return ...
+}
+
+x Components
+building blocks of react
+Pieces of UI and view logic
+- using functions
+    functions that know how to return HTML to render
+    
+
+x Key props
+- 
