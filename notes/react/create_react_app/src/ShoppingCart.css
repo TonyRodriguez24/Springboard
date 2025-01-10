@@ -1,0 +1,9 @@
+.ShoppingCart{
+    border: 2px solid gray;
+    width: 400px;
+    text-align: center;
+}
+
+.ShoppingCart-header{
+    font-size: 20px;
+}
