@@ -6,7 +6,10 @@ const CartItem = ({item, img, price, quantity}) => (
         <h4 className='CartItem-title'>{item}</h4>
         <img className = 'CartItem-img' src={img} />
         <ul>
-            <li>Price {price}</li>
+            <li style={{
+                color: 'magenta',
+                backgroundColor: 'lightblue'
+            }}>Price {price}</li>
             <li>Quantity {quantity}</li>
             <li>Subtotal {quantity * price}</li>
         </ul>
