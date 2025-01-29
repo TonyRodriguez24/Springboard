@@ -1,0 +1,12 @@
+node_modules/
+__pycache__
+.prettierrc
+package-lock.json
+package.json
+venv/
+
+# Ignore sensitive configuration files
+secret.py
+.webassets-cache/
+.env
+error.log

@@ -1,0 +1,17 @@
+x Researching and understanding login strategy
+
+- The logged in user is being kept track of by this
+
+@app.before_request
+def load_logged_in_user():
+    """If we're logged in, add current user to Flask global."""
+
+    if CURR_USER_KEY in session:
+        g.user = User.query.get(session[CURR_USER_KEY])
+
+    else:
+        g.user = None
+
+- g comes with Flask
+- app before request means it runs before each request we send to the server
+- the purpose of the function is load the users data in if they are logged in

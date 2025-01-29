@@ -1,0 +1,66 @@
+* {
+    font-family: 'Poppins', serif;
+    font-weight: 500;
+    font-style: normal;
+}
+
+.nav-link {
+    color: black;
+}
+
+.nav-link:hover {
+    color: rgb(255, 255, 255);
+}
+
+.nav-item .nav-link.active {
+    color: rgb(255, 160, 65);
+}
+.dropdown-item:hover {
+    background-color: rgb(176, 195, 214); /* Hover background color */
+}
+
+/* Default state */
+.contact-btn {
+    border: 2px solid rgb(12, 23, 96);
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.contact-btn.active {
+    background-color: #003674; /* Even darker blue when clicked */
+}
+
+#services .card {
+    border: 0px;
+}
+.header {
+    font-size: 3.5em;
+}
+
+#footer-border h3 {
+    display: flex;
+    text-align: center;
+    align-items: center;
+    justify-content: space-evenly;
+    width: 100%;
+    font-size: 24px;
+    margin-top: 40px;
+}
+#footer-border h3::after,
+#footer-border h3::before {
+    content: ' ';
+    display: flex;
+    height: 2px;
+    background-color: #000000;
+    width: 30%;
+    margin: 0 auto;
+}
+
+.footer-social {
+    font-size: 3em;
+}
+
+#ContactForm {
+    background: linear-gradient(135deg, #9acdffca, #fad0c4c6 50%, #fbc2eb78);
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.4); /* Subtle shadow for depth */
+    border-radius: 10px; /* Optional: Rounded corners for smoother look */
+}
