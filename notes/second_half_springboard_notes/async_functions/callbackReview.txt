@@ -1,0 +1,7 @@
+Asynchronous javascript
+
+    -   hands set timeout off to the browser
+    -    same with other asychronous functions
+
+    Async + ajax
+    
