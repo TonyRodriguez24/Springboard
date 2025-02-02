@@ -293,7 +293,6 @@ Examples:
     doubleOddNumbers([1,2,3,4,5]) // [2,6,10]
     doubleOddNumbers([4,4,4,4,4]) // []
 */
-
 function doubleOddNumbers(arr) {
     return arr
         .filter(function (num) {
