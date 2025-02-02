@@ -7,8 +7,8 @@ function SimpleCounter() {
   }
 
   function clickUpBy2() {
-    setNum(num + 1);
-    setNum(num + 1);
+    setNum(n => n + 1);
+    setNum(n => n + 1);
   }
 
   return (
