@@ -1,25 +1,20 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
+import axios from 'axios';
 
-/** GitHub Profile Component --- shows info from GH API */
 
-function ProfileViewer() {
-  const [profile, setProfile] = useState(null);
+const ProfileViewer = ({name}) => {
+  const [data, setData] = useState(null);
 
-  // this is called *after* component first added to DOM
-  useEffect(function fetchUserWhenMounted() {
-    async function fetchUser() {
-      const userResult = await axios.get(
-        "https://api.github.com/users/elie");
-      setProfile(userResult.data);
-    }
-    fetchUser();
-  }, []);
+  useEffect(() => {
+    axios.get(`https://api.github.com/users/${name}`).then(res => {
+      setData(res.data.name)
+    })
+  }, [name])
+
 
   return (
-    <div>{profile ? <h2>{profile.name}</h2> : <i>(loading)</i>}</div>
-  );
-};
-// end
+    <h3>{data ? data : 'Loading...'}</h3>
+  )
+}
 
 export default ProfileViewer;

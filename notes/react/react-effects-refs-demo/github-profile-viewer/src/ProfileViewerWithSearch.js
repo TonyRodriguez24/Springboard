@@ -6,31 +6,30 @@ const BASE_URL = "https://api.github.com/users";
 
 /** GitHub Profile Component --- shows info from GH API */
 
-function ProfileViewerWithSearch() {
+const ProfileViewerWithSearch = () => {
   const [profile, setProfile] = useState(null);
-  const [username, setUsername] = useState("elie");
+  const [url, setUrl] = useState(BASE_URL)
 
-  function search(username) {
-    setUsername(username);
-  };
+  const search = term => {
+    setUrl(`${BASE_URL}/${term}`)
+  }
 
-  // this is called after component is first added to DOM
-  // and every time username changes
-  useEffect(function fetchUserOnUsernameChange() {
-    async function fetchUser() {
-      const userResult = await axios.get(`${BASE_URL}/${username}`);
-      setProfile(userResult.data);
+  useEffect(() => {
+    console.log('in effect')
+    async function loadProfile() {
+      const res = await axios.get(url);
+      setProfile(res.data);
     }
-    fetchUser();
-  }, [username]);
-
+    loadProfile();
+    return () => console.log('This runs before the effect itself except for the first time')
+  }, [url])
 
   return (
     <div>
-      <ProfileSearchForm search={search} />
-      {profile ? <h2>{profile.name}</h2> : <i>(loading)</i>}
+      {profile ? <h1>{profile.name}</h1> : <h1>Loading...</h1>}
+      <ProfileSearchForm search={search}/>
     </div>
-  );
-};
+  )
+}
 
 export default ProfileViewerWithSearch;

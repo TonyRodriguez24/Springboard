@@ -11,7 +11,8 @@ function Counter() {
         console.log('running')
         document.title = `Hi${'!'.repeat(num)}`
 
-    })
+    }, [])
+
     return (
         <div>
             Lets get excited

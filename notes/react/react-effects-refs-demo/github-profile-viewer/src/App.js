@@ -6,7 +6,7 @@ const App = () => (
   <div className="App">
     <div>
       <h1>Profile Viewer</h1>
-      <ProfileViewer />
+      <ProfileViewer name="Colt" color="orange"/>
     </div>
     <div>
       <h1>Profile Viewer With Search</h1>

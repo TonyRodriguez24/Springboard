@@ -1,20 +1,18 @@
 import React, { useState } from "react";
-import TimerWithRef from "./TimerWithRef";
+import Timer from "./Timer";
 
 function TimerWrapper() {
-  const [timerHidden, setTimerHidden] = useState(false);
-  function toggle(evt) {
-    setTimerHidden(isHidden => !isHidden);
-  };
+  const [timerVisible, setTimerVisible] = useState(true);
 
+  const toggleTimer = () => {
+    setTimerVisible(!timerVisible);
+  }
   return (
     <div>
-      <button onClick={toggle}>
-        {timerHidden ? "Show timer" : "Hide timer"}
-      </button>
-      {timerHidden ? null : <TimerWithRef />}
+      <button onClick={toggleTimer}>Toggle Timer</button>
+      {timerVisible && <Timer/>}
     </div>
-  );
+  )
 }
 
 export default TimerWrapper;
