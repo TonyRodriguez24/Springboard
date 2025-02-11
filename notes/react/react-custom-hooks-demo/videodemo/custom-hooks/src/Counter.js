@@ -1,5 +1,6 @@
 import React from "react";
-import useLocalStorageState from './hooks/useLocalStorageState';
+import useLocalStorageState from "./hooks/useLocalStorageState";
+
 const Counter = () => {
   const [count, setCount] = useLocalStorageState('count', 0);
   const addToCount = () => {

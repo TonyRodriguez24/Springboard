@@ -1,20 +1,14 @@
-import React, { useState } from "react";
+import React from "react";
 import './MoodClicker.css';
+import useToggleState from "./hooks/useToggleState";
 
 const MoodClicker = () => {
-  const [isHappy, setIsHappy] = useState(true);
-  const [isDarkMode, setIsDarkMode] = useState(false);
-
-  const toggleMood = () => {
-    setIsHappy(mood => !mood)
-  }
-  const toggleIsDarkMode = () => {
-    setIsDarkMode(mode => !mode)
-  }
+  const [isHappy, toggleIsHappy] = useToggleState(true)
+  const [isDarkMode, toggleIsDarkMode] = useToggleState(false)
   return (
     <div className={isDarkMode ? 'Clicker-dark' : 'Clicker-light'}>
       <h1>{isHappy ? '😀' : '😭'}</h1>
-      <button onClick={toggleMood}>Change mood</button>
+      <button onClick={toggleIsHappy}>Change mood</button>
       <button onClick={toggleIsDarkMode}>Change dark or light mode</button>
     </div>
 
