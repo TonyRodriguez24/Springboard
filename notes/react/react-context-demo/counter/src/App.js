@@ -1,12 +1,17 @@
 import React from "react";
-import CounterReadOnly from "./CounterReadOnly";
-import CounterReadWrite from "./CounterReadWrite";
+import Child from "./Child";
+import Navbar from "./Navbar";
+import ThemeProvider from "./ThemeProvider";
 
 function App() {
+
+
   return (
-    <div>
-      <CounterReadOnly />
-      {/* <CounterReadWrite /> */}
+    <div className="App">
+      <ThemeProvider>
+        <Navbar />
+        <Child />
+      </ThemeProvider>
     </div>
   );
 }
