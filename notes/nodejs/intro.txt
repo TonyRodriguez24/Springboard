@@ -1,0 +1,6 @@
+Why use Node?
+- the entire stack can be JavaScript
+- has a very extensive set of add-on libraries via npm
+- many can also be used in client-side JS
+- widely used
+- good at handling multiple things at once

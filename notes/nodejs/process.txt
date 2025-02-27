@@ -1,0 +1,8 @@
+Process
+
+- access env variables
+- see the comman line arguments passed to the script
+- process.env.SOME_ENVIRONMENTAL_VALUE
+- process.argv
+- process.exit - exit immediately and return an exit code to shell
+
