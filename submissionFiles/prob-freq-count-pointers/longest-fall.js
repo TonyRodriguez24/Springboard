@@ -2,7 +2,11 @@
 //Write a function called longestFall, which accepts an array of integers, and returns the length of the longest consecutive decrease of integers.
 
 
-function longestFall() {
+function longestFall(arr) {
+    
+
+
+
 }
 
 longestFall([5, 3, 1, 3, 0]) // 3, 5-3-1 is the longest consecutive sequence of decreasing integers
