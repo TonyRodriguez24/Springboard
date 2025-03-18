@@ -31,20 +31,19 @@ describe("GET /cats", function() {
 
 /** GET /cats/[name] - return data about one cat: `{cat: cat}` */
 
-describe("GET /cats/:name", function() {
-  test("Gets a single cat", async function() {
+describe("GET /cats/:name", function () {
+  test("Get cat by name", async function () {
     const resp = await request(app).get(`/cats/${pickles.name}`);
     expect(resp.statusCode).toBe(200);
 
-    expect(resp.body).toEqual({cat: pickles});
+    expect(resp.body).toEqual({ cat: pickles });
   });
-
-  test("Responds with 404 if can't find cat", async function() {
-    const resp = await request(app).get(`/cats/0`);
+  test("404 for invalid cat name", async function () {
+    const resp = await request(app).get(`/cats/icecube`);
     expect(resp.statusCode).toBe(404);
+
   });
 });
-// end
 
 /** POST /cats - create cat from data; return `{cat: cat}` */
 
@@ -60,39 +59,42 @@ describe("POST /cats", function() {
       cat: { name: "Ezra" }
     });
   });
+
+  test('400 for incorrect cat data', async () => {
+    const res = await request(app).post('/cats').send({})
+    expect(res.statusCode).toBe(400);
+  })
+
 });
 // end
 
 /** PATCH /cats/[name] - update cat; return `{cat: cat}` */
 
-describe("PATCH /cats/:name", function() {
-  test("Updates a single cat", async function() {
-    const resp = await request(app)
-      .patch(`/cats/${pickles.name}`)
-      .send({
-        name: "Troll"
-      });
-    expect(resp.statusCode).toBe(200);
-    expect(resp.body).toEqual({
-      cat: { name: "Troll" }
-    });
-  });
+describe('/PATCH/cats/:name', () => {
+  test('updating a cats name', async () => {
+    const res = await request(app).patch(`/cats/${pickles.name}`).send({ name: 'Monster' })
+    expect(res.statusCode).toBe(200);
+    expect(res.body).toEqual({cat: {name: 'Monster'}})
+  })
 
-  test("Responds with 404 if id invalid", async function() {
-    const resp = await request(app).patch(`/cats/0`);
-    expect(resp.statusCode).toBe(404);
-  });
-});
-// end
+  test('404 for invalid cat name', async () => {
+    const res = await request(app).patch(`/cats/Piggles`).send({ name: 'Monster' })
+    expect(res.statusCode).toBe(404)
+
+  })
+})
 
 /** DELETE /cats/[name] - delete cat,
  *  return `{message: "Cat deleted"}` */
 
-describe("DELETE /cats/:name", function() {
-  test("Deletes a single a cat", async function() {
-    const resp = await request(app).delete(`/cats/${pickles.name}`);
-    expect(resp.statusCode).toBe(200);
-    expect(resp.body).toEqual({ message: "Deleted" });
-  });
-});
-// end
+describe('/DELETE/cats/:name', () => {
+  test('Deleting a cats name', async () => {
+    const res = await request(app).delete(`/cats/${pickles.name}`)
+    expect(res.statusCode).toBe(200)
+    expect(res.body).toEqual({message: 'Deleted'})
+  })
+  test('404 for deleting invalid cat', async () => {
+    const res = await request(app).delete(`/cats/HAMFACE}`)
+    expect(res.statusCode).toBe(404)
+  })
+})
