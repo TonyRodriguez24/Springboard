@@ -1,0 +1,8 @@
+In Python its usually SQLAlchemy when talking to a db
+
+- use pg to connect and execute sql queries
+- sql injection and how to prevent it with pg
+
+- ORMs
+- query builders
+- SQL driver
