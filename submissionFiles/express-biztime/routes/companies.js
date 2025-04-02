@@ -17,6 +17,9 @@ router.get('/:code', async (req, res, next) => {
     try {
         const { code } = req.params;
         const result = await db.query(`SELECT * FROM companies where code=$1`, [code])
+        if (result.rows.length === 0) {
+            throw new ExpressError('Company not found', 404)
+        }
         return res.json({company: result.rows[0]})
     } catch (e) {
         return next(e)
