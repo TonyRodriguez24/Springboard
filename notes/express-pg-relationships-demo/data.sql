@@ -43,3 +43,11 @@ INSERT INTO messages_tags VALUES
     (1, 'py'),
     (1, 'js'),
     (2, 'js');
+
+SELECT m.id, m.msg, t.tag
+FROM messages as m
+LEFT JOIN messages_tags as mt
+ON m.id = mt.message_id
+LEFT JOIN tags as t
+ON mt.tag_code = t.code
+WHERE m.id = 1
