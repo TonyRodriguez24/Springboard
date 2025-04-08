@@ -1,0 +1,7 @@
+Goals
+
+- hash pashword with Bcrypt in node
+- using JSON web tokens for API authentication
+- JWT = json web tokens
+- use middlware to simplify route security
+
