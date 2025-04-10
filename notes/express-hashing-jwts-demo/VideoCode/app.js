@@ -7,6 +7,7 @@ const ExpressError = require("./expressError");
 const { authenticateJWT } = require("./middleware/auth");
 
 app.use(express.json());
+app.use(authenticateJWT);
 app.use("/", routes);
 
 /** 404 catch --- passes to next handler. */
