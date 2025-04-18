@@ -5,7 +5,7 @@
 const jsonschema = require("jsonschema");
 
 const express = require("express");
-const { ensureLoggedIn } = require("../middleware/auth");
+const { ensureLoggedIn, ensureAdmin, ensureActiveUserOrAdmin } = require("../middleware/auth");
 const { BadRequestError } = require("../expressError");
 const User = require("../models/user");
 const { createToken } = require("../helpers/tokens");
@@ -27,7 +27,7 @@ const router = express.Router();
  * Authorization required: login
  **/
 
-router.post("/", ensureLoggedIn, async function (req, res, next) {
+router.post("/", ensureLoggedIn, ensureAdmin, async function (req, res, next) {
   try {
     const validator = jsonschema.validate(req.body, userNewSchema);
     if (!validator.valid) {
@@ -51,7 +51,7 @@ router.post("/", ensureLoggedIn, async function (req, res, next) {
  * Authorization required: login
  **/
 
-router.get("/", ensureLoggedIn, async function (req, res, next) {
+router.get("/", ensureLoggedIn, ensureAdmin, async function (req, res, next) {
   try {
     const users = await User.findAll();
     return res.json({ users });
@@ -68,7 +68,7 @@ router.get("/", ensureLoggedIn, async function (req, res, next) {
  * Authorization required: login
  **/
 
-router.get("/:username", ensureLoggedIn, async function (req, res, next) {
+router.get("/:username", ensureLoggedIn, ensureActiveUserOrAdmin, async function (req, res, next) {
   try {
     const user = await User.get(req.params.username);
     return res.json({ user });
@@ -76,6 +76,18 @@ router.get("/:username", ensureLoggedIn, async function (req, res, next) {
     return next(err);
   }
 });
+
+
+
+router.post('/:username/jobs/:id', async (req, res, next) => {
+  try {
+    const { username, id } = req.params;
+    const response = await User.applyToJob(username, id);
+    return res.json(response)
+  } catch (error) {
+    return next(error)
+  }
+})
 
 
 /** PATCH /[username] { user } => { user }
@@ -88,7 +100,7 @@ router.get("/:username", ensureLoggedIn, async function (req, res, next) {
  * Authorization required: login
  **/
 
-router.patch("/:username", ensureLoggedIn, async function (req, res, next) {
+router.patch("/:username", ensureLoggedIn, ensureAdmin, ensureActiveUserOrAdmin, async function (req, res, next) {
   try {
     const validator = jsonschema.validate(req.body, userUpdateSchema);
     if (!validator.valid) {
@@ -109,7 +121,7 @@ router.patch("/:username", ensureLoggedIn, async function (req, res, next) {
  * Authorization required: login
  **/
 
-router.delete("/:username", ensureLoggedIn, async function (req, res, next) {
+router.delete("/:username", ensureLoggedIn, ensureAdmin, ensureActiveUserOrAdmin, async function (req, res, next) {
   try {
     await User.remove(req.params.username);
     return res.json({ deleted: req.params.username });

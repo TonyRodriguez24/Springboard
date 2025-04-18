@@ -1,0 +1,30 @@
+{
+  "$schema": "https://json-schema.org/draft-07/schema",
+  "$id": "http://example.com/jobUpdate.json",
+  "type": "object",
+  "properties": {
+    "title": {
+      "type": "string",
+      "title": "The title Schema",
+      "examples": ["Accommodation manager"]
+    },
+    "salary": {
+      "type": "integer",
+      "title": "The salary Schema",
+      "examples": [126000]
+    },
+    "equity": {
+      "type": ["number", "null"],
+      "minimum": 0,
+      "maximum": 1,
+      "title": "The equity Schema",
+      "examples": [0.1, 0.5, null]
+    },
+    "companyHandle": {
+      "type": "string",
+      "title": "The companyHandle Schema",
+      "examples": ["mejia-scott-ryan"]
+    }
+  },
+  "additionalProperties": false
+}
