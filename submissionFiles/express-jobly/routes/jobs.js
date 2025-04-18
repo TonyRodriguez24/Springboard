@@ -19,8 +19,6 @@ router.get('/', async (req, res, next) => {
 })
 
 //only admins can add, update, or delete jobs.
-//validate the data
-
 // adding a job
 router.post('/', async (req, res, next) => {
     try {
@@ -36,6 +34,7 @@ router.post('/', async (req, res, next) => {
     }
 })
 
+//get jobs by company handle, may return multiple jobs
 router.get('/:handle', async (req, res, next) => {
     try {
         const { handle } = req.params;

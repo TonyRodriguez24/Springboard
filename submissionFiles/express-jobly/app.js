@@ -17,11 +17,13 @@ const morgan = require("morgan");
 
 const app = express();
 
-app.use(cors());
+app.use(cors()); //note for self - allows our front end to communicate with our back end
 app.use(express.json());
-app.use(morgan("tiny"));
-app.use(authenticateJWT);
+app.use(morgan("tiny")); //note to self - gives us bare essentials on each http request in the console
+app.use(authenticateJWT); //app.use(authenticateJWT)
 
+
+//routes
 app.use('/jobs', jobRoutes)
 app.use("/auth", authRoutes);
 app.use("/companies", companiesRoutes);

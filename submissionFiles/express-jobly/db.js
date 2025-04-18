@@ -1,6 +1,7 @@
 "use strict";
 /** Database setup for jobly. */
-const { Client } = require("pg");
+const { Client } = require("pg"); //standar way to connect to a postgreSQL database in nodeJS
+//client better for one tiem scripts pool is better when actually building a web application
 const { getDatabaseUri } = require("./config");
 
 let db;
