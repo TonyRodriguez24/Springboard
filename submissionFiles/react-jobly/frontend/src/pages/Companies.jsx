@@ -19,8 +19,8 @@ export default function Companies() {
   const handleSubmit = async (e) => {
       e.preventDefault();
       const term  = formData.search;
-      const res = await JoblyApi.searchCompanies(term);
-      setCompanies(res.companies)
+      const response = await JoblyApi.searchCompanies(term);
+      setCompanies(response)
   };
 
   const handleChange = (e) => {

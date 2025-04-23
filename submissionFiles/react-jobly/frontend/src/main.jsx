@@ -9,6 +9,7 @@ import Companies from "./pages/Companies.jsx";
 import Company from "./pages/Company.jsx";
 import Register from "./pages/Register.jsx";
 import Login from "./pages/Login.jsx";
+import Profile from './pages/Profile.jsx'
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
@@ -20,6 +21,7 @@ createRoot(document.getElementById("root")).render(
           <Route path="/companies" element={<Companies />} />
           <Route path="/companies/:company" element={<Company />} />
           <Route path="/register" element={<Register />} />
+          <Route path="/profile" element={<Profile />} />
           <Route path="/login" element={<Login />} />
         </Route>
       </Routes>

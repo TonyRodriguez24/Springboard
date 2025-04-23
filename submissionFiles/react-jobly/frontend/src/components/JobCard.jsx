@@ -1,4 +1,16 @@
-export default function JobCard({jobs}) {
+export default function JobCard({ jobs }) {
+  const handleSubmit = async () => {
+    
+  }
+
+  const handleClick = async () => {
+
+  }
+
+  // Handle submit will handle the updating the db with form data logic
+  // Handle click will change  
+
+
   return (
     <>
       {jobs.map((job) => (
@@ -9,8 +21,8 @@ export default function JobCard({jobs}) {
             <p>Salary: ${job.salary.toLocaleString()}</p>
           ) : null}
           {job.equity && job.equity > 0 ? <p>Equity: {job.equity}</p> : null}
-          <form className="flex ">
-            <button className="ml-auto py-2 px-4 rounded-md bg-blue-500 cursor-pointer">
+          <form className="flex" onSubmit={handleSubmit}>
+            <button className="ml-auto py-2 px-4 rounded-md bg-blue-500 cursor-pointer" onClick={handleClick}>
               Apply
             </button>
           </form>

@@ -45,7 +45,7 @@ class JoblyApi {
 
   static async searchCompanies(name) {
     let response = await this.request(`companies/?name=${name}`)
-    return response;
+    return response.companies;
   }
 
   // obviously, you'll add a lot here ...
