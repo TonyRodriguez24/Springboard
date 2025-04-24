@@ -12,7 +12,6 @@ export default function Company() {
   useEffect(() => {
     const fetchData = async () => {
       const response = await JoblyApi.getCompany(company);
-      console.log(response);
       const { jobs, name } = response;
       setJobs(jobs);
       setName(name);
