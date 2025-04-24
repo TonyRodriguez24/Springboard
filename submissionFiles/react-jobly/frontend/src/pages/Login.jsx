@@ -1,16 +1,25 @@
 import { useState } from "react";
+import JoblyApi from "../../api";
 
 export default function Login() {
   const INITIAL_STATE = {
     username: "",
     password: "",
-    firstName: "",
-    lastName: "",
-    email: "",
   };
   const [formData, setFormData] = useState(INITIAL_STATE);
 
-  const handleSubmit = () => {};
+  const handleSubmit = async (e) => {
+    try {
+       e.preventDefault();
+
+       const response = await JoblyApi.login(formData);
+       console.log(response);
+       setFormData(INITIAL_STATE);
+    } catch (error) {
+      console.log(error)
+    }
+   
+  };
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -25,7 +34,7 @@ export default function Login() {
   return (
     <div className="p-3 flex flex-col justify-center items-center gap-4">
       <h1 className="text-2xl text-center">Login</h1>
-      <form onSubmit={handleSubmit} className="flex flex-col w-1/6 gap-6">
+      <form onSubmit={handleSubmit} className="flex flex-col lg:w-1/6 gap-6">
         <input
           type="text"
           id="username"
@@ -46,7 +55,7 @@ export default function Login() {
         />
 
         <button className="py-3 px-4 rounded-md bg-blue-500 cursor-pointer">
-          Search
+          Login
         </button>
       </form>
     </div>
