@@ -1,5 +1,6 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import JoblyApi from "../../api";
+import UserContext from "../UserContext";
 
 export default function Login() {
   const INITIAL_STATE = {
@@ -7,13 +8,14 @@ export default function Login() {
     password: "",
   };
   const [formData, setFormData] = useState(INITIAL_STATE);
+  const {setCurrentUser} = useContext(UserContext)
 
   const handleSubmit = async (e) => {
     try {
        e.preventDefault();
 
        const response = await JoblyApi.login(formData);
-       console.log(response);
+        setCurrentUser({ username: formData.username})
        setFormData(INITIAL_STATE);
     } catch (error) {
       console.log(error)

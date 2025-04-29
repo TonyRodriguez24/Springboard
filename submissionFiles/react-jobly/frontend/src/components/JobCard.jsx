@@ -13,7 +13,7 @@ export default function JobCard({ jobs }) {
 
   return (
     <>
-      {jobs.map((job) => (
+      {Array.isArray(jobs) && jobs.map((job) => (
         <li key={job.id} className="bg-gray-900 text-white p-10 rounded-xl">
           <h3 className="font-bold">{job.title}</h3>
           <p className="text-sm mb-5">{job.companyName}</p>

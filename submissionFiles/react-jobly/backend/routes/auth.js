@@ -73,10 +73,26 @@ router.post("/login", async function (req, res, next) {
 
     /* 
     
-    ADD LOGIC
-    
+ (a) Pull username and password out of req.body.
+
+(b) Use your User.authenticate(username, password) method.
+
+It should return the user if login is good.
+
+It should throw an error if login is bad.
+
+(c) If user is authenticated, create a token for them (createToken(user)).
+
+(d) Return the token in the JSON response.
+
+
     */
     
+    const { username, password } = req.body;
+    const user = await User.authenticate(username, password);
+    const token = createToken(user)
+    return res.json({token: token})
+
 
   } catch (err) {
     return next(err);

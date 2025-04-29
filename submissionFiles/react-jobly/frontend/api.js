@@ -53,6 +53,11 @@ class JoblyApi {
     return response.companies;
   }
 
+  static async searchJobs(title) {
+    let response = await this.request(`jobs/?title=${title}`)
+    return response.jobs
+  }
+
   static async register(formData) {
     const response = await this.request(`auth/register`, formData, "POST")
     JoblyApi.token = response.token //setting the joblyApi token used to communicate to the token we get from registering
