@@ -1,0 +1,17 @@
+Binary search trees
+
+
+- each node can have a maximum of 2 children
+- right hand trial will be greater by some sorted value than the middle and left
+- way better to inserting into an array with is an O(n) operation beacuse everything has to be shifted
+
+- Binary tree and a binary search tree are different because 
+a binary search tree has a rule for arrangement
+
+x Big O run time for a binary search tree
+- O(log n)
+
+In a binary search tree, traversing means looking at every node
+- different than searching, not comparing left and right. Just visiting everything.
+
+x Traversal

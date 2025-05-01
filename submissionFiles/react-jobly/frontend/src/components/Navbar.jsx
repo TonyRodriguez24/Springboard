@@ -1,13 +1,13 @@
+import { useContext } from "react";
 import { Link } from "react-router-dom";
 import UserContext from "../UserContext";
-import { useContext } from "react";
 
 export default function Navbar() {
-  const { currentUser, setCurrentUser } = useContext(UserContext)
-  
+  const { currentUser, setCurrentUser } = useContext(UserContext);
+
   function logout() {
-    localStorage.removeItem('token');
-    setCurrentUser(null)
+    localStorage.removeItem("token");
+    setCurrentUser(null);
   }
   return (
     <>
@@ -39,8 +39,7 @@ export default function Navbar() {
         {currentUser ? (
           <button
             onClick={() => {
-              localStorage.removeItem("token");
-              setCurrentUser(null);
+              logout();
             }}
             className="hover:text-amber-400">
             Logout
