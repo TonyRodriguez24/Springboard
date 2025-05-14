@@ -29,3 +29,20 @@ it("works when you click on the right arrow", function() {
     container.querySelector('img[alt="testing image 2"]')
   ).toBeInTheDocument();
 });
+
+it("does not go past the last image", function () {
+  const { container } = render(
+    <Carousel photos={TEST_IMAGES} title="images for testing" />
+  );
+
+  const rightArrow = container.querySelector(".bi-arrow-right-circle");
+
+  fireEvent.click(rightArrow);
+  fireEvent.click(rightArrow);
+  fireEvent.click(rightArrow); // click past the last image
+
+  // Should still be on the last image
+  expect(
+    container.querySelector('img[alt="testing image 3"]')
+  ).toBeInTheDocument();
+});
